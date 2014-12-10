@@ -17,7 +17,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -25,37 +24,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Iram
  */
 @Entity
-@Table(name = "PULJER")
+@Table(name = "UDVALGTEFAG1RUNDE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Puljer.findAll", query = "SELECT p FROM Puljer p"),
-    @NamedQuery(name = "Puljer.findByValgfagid", query = "SELECT p FROM Puljer p WHERE p.valgfagid = :valgfagid"),
-    @NamedQuery(name = "Puljer.findByPulje", query = "SELECT p FROM Puljer p WHERE p.pulje = :pulje")})
-public class Puljer implements Serializable {
+    @NamedQuery(name = "Udvalgtefag1runde.findAll", query = "SELECT u FROM Udvalgtefag1runde u"),
+    @NamedQuery(name = "Udvalgtefag1runde.findByValgfagid", query = "SELECT u FROM Udvalgtefag1runde u WHERE u.valgfagid = :valgfagid")})
+public class Udvalgtefag1runde implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "VALGFAGID")
     private Integer valgfagid;
-    @Size(max = 20)
-    @Column(name = "PULJE")
-    private String pulje;
     @JoinColumn(name = "VALGFAGID", referencedColumnName = "ID", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Valgfag valgfag;
 
-    public Puljer() {
+    public Udvalgtefag1runde() {
     }
 
-    public Puljer(Integer valgfagid, String pulje) {
-        this.valgfagid = valgfagid;
-        this.pulje = pulje;
-    }
-    
-    
-
-    public Puljer(Integer valgfagid) {
+    public Udvalgtefag1runde(Integer valgfagid) {
         this.valgfagid = valgfagid;
     }
 
@@ -65,14 +53,6 @@ public class Puljer implements Serializable {
 
     public void setValgfagid(Integer valgfagid) {
         this.valgfagid = valgfagid;
-    }
-
-    public String getPulje() {
-        return pulje;
-    }
-
-    public void setPulje(String pulje) {
-        this.pulje = pulje;
     }
 
     public Valgfag getValgfag() {
@@ -93,10 +73,10 @@ public class Puljer implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Puljer)) {
+        if (!(object instanceof Udvalgtefag1runde)) {
             return false;
         }
-        Puljer other = (Puljer) object;
+        Udvalgtefag1runde other = (Udvalgtefag1runde) object;
         if ((this.valgfagid == null && other.valgfagid != null) || (this.valgfagid != null && !this.valgfagid.equals(other.valgfagid))) {
             return false;
         }
@@ -105,7 +85,7 @@ public class Puljer implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Puljer[ valgfagid=" + valgfagid + " ]";
+        return "entity.Udvalgtefag1runde[ valgfagid=" + valgfagid + " ]";
     }
     
 }

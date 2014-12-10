@@ -54,10 +54,11 @@ public class Valgfag implements Serializable {
     private Collection<FørsteRunde> førsteRundeCollection2;
     @OneToMany(mappedBy = "andenPrioritetb")
     private Collection<FørsteRunde> førsteRundeCollection3;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "valgfag")
+    private Udvalgtefag1runde udvalgtefag1runde;
 
     public Valgfag() {
     }
-    
 
     public Valgfag(Integer id) {
         this.id = id;
@@ -121,6 +122,14 @@ public class Valgfag implements Serializable {
 
     public void setFørsteRundeCollection3(Collection<FørsteRunde> førsteRundeCollection3) {
         this.førsteRundeCollection3 = førsteRundeCollection3;
+    }
+
+    public Udvalgtefag1runde getUdvalgtefag1runde() {
+        return udvalgtefag1runde;
+    }
+
+    public void setUdvalgtefag1runde(Udvalgtefag1runde udvalgtefag1runde) {
+        this.udvalgtefag1runde = udvalgtefag1runde;
     }
 
     @Override

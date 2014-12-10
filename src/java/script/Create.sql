@@ -1,6 +1,5 @@
+DROP TABLE udvalgtefag1runde;
 DROP TABLE puljer;
-DROP TABLE pulje_A;
-DROP TABLE pulje_B;
 DROP TABLE første_runde;
 DROP TABLE student;
 DROP TABLE valgfag;
@@ -29,8 +28,11 @@ Create TABLE puljer(
  pulje varchar(20)
 );
 
+Create Table udvalgtefag1runde(
+ valgfagId INTEGER REFERENCES valgfag(id) NOT NULL primary key
+);
 
 
 
 
-  
+  select * from puljer
