@@ -26,8 +26,10 @@
             Titel <input type="text" id="titel"></input> Underviser <input type="text" id="underviser"></input>
         </p>
         <p>Beskrivelse</p>
-        <input id="beskrivelse" type="text" style="width: 30em; height: 15em; border: 1px solid"></input>
-        
+        <textarea id="beskrivelse" type="text" style="width: 30em; height: 15em; border: 1px solid;"></textarea>
+        <p></p>
+        <label style="margin-right: 18em">Besked</label> <button type="button" id="gem">Gem</button>
+       
         
         
     </body>
