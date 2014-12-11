@@ -7,7 +7,6 @@
 package servlet;
 
 import controller.Controller2;
-import dto.ValgfagResultat;
 import entity.Valgfag;
 import java.io.IOException;
 import java.util.Collection;
@@ -25,30 +24,17 @@ import javax.servlet.http.HttpServletResponse;
 {
     "/S_tPrioritetF_rsteRundeServlet"
 })
-public class SætPrioritetFørsteRundeServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class SætPrioritetFørsteRundeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-      
         Controller2 controller = new Controller2();
         Collection<Valgfag> valgfag = controller.hentUdvalgteFagTilFørsteRunde();
         int count = valgfag.size();
         request.setAttribute("count", count);
         request.setAttribute("valgfag", valgfag);
-        
-        
-        
         request.getRequestDispatcher("sætPrioritetFørsteRunde.jsp").forward(request, response);
     }
 

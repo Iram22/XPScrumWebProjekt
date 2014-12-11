@@ -4,7 +4,7 @@ DROP TABLE første_runde;
 DROP TABLE student;
 DROP TABLE valgfag;
 
-drop sequence valgfag_number_seq;
+DROP SEQUENCE valgfag_number_seq restrict;
 
 create sequence valgfag_number_seq as int start with 1 increment by 1;
 
@@ -35,8 +35,3 @@ Create TABLE puljer(
 Create Table udvalgtefag1runde(
  valgfagId INTEGER REFERENCES valgfag(id) NOT NULL primary key
 );
-
-
-
-
-  select * from puljer

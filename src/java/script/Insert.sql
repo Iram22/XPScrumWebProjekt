@@ -12,7 +12,8 @@ INSERT into valgfag values
 (6, 'Python'),
 (7, 'WebProgrammering'),
 (8, 'Grafik'),
-(9, 'Pascal');
+(9, 'Pascal'),
+(10, 'C');
 
 
 INSERT into student values
@@ -40,6 +41,7 @@ insert into udvalgtefag1runde values
 (6),
 (7),
 (8),
-(9);
+(9),
+(10);
 
-select * from første_runde
+select * from første_runde 

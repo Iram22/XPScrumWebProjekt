@@ -47,26 +47,16 @@ public class Controller2 {
         return valgfag;
     }
 
-    public void gemPrioriteterIDB(String navn, String a1, String a2, String b1, String b2)
+    public void gemPrioriteterIDB(String navn, Collection fag)
     {
         Query studentQuery = em.createNamedQuery("Student.findByNavn");
         studentQuery.setParameter("navn", navn);
         List<Student> student = studentQuery.getResultList();
-        Query valgfag1aQuery = em.createNamedQuery("Valgfag.findByFag");
-        valgfag1aQuery.setParameter("fag", a1);
-        List<Valgfag> valgfag1a = valgfag1aQuery.getResultList();
-        Query valgfag1bQuery = em.createNamedQuery("Valgfag.findByFag");
-        valgfag1bQuery.setParameter("fag", b1);
-        List<Valgfag> valgfag1b = valgfag1bQuery.getResultList();
-        Query valgfag2aQuery = em.createNamedQuery("Valgfag.findByFag");
-        valgfag2aQuery.setParameter("fag", a2);
-        List<Valgfag> valgfag2a = valgfag2aQuery.getResultList();
-        Query valgfag2bQuery = em.createNamedQuery("Valgfag.findByFag");
-        valgfag2bQuery.setParameter("fag", b2);
-        List<Valgfag> valgfag2b = valgfag2bQuery.getResultList();
-        System.out.println(""+student.get(0).getId() + valgfag1a.get(0) + valgfag2a.get(0) + valgfag1b.get(0) + valgfag2b.get(0) + student.get(0));
-        
-        persist(new FørsteRunde(student.get(0).getId(),valgfag1a.get(0),valgfag2a.get(0),valgfag1b.get(0),valgfag2b.get(0),student.get(0)));
+        Query valgfagQuery = em.createNamedQuery("Valgfag.findByPrioriteter");
+        valgfagQuery.setParameter("fag", fag);
+        List<Valgfag> valgfag = valgfagQuery.getResultList();
+        //System.out.println(""+student.get(0).getId() + valgfag.get(0) + valgfag.get(1)+ valgfag.get(2) + valgfag.get(3));        
+        persist(new FørsteRunde(student.get(0).getId(),valgfag.get(0),valgfag.get(1),valgfag.get(2),valgfag.get(3)));
                
         
     }

@@ -8,7 +8,8 @@ package servlet;
 
 import controller.Controller2;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,15 +37,15 @@ public class PrioritetGemtServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String navn = request.getParameter("navn");
-        String a1 = request.getParameter("1a");
-        String a2 = request.getParameter("1b");
-        String b1 = request.getParameter("2a");
-        String b2 = request.getParameter("2b");
+        List fag = new ArrayList();
+        fag.add(request.getParameter("1a"));
+        fag.add(request.getParameter("1b"));
+        fag.add(request.getParameter("2a"));
+        fag.add(request.getParameter("2b"));
         
-        controller.Controller2 controller = new Controller2();
+        Controller2 controller = new Controller2();
         
-        System.out.println(navn + a1 + a2 + b1 + b2);
-        controller.gemPrioriteterIDB(navn, a1, a2, b1, b2);
+        controller.gemPrioriteterIDB(navn, fag);
         
         
     }
