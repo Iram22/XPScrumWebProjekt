@@ -14,7 +14,6 @@
 	<script>
 		$(function() {
 			var col, el;
-			
 			$("input[type=radio]").click(function() {
 			   el = $(this);
 			   col = el.data("col");
@@ -28,7 +27,7 @@
     <body>
 
         <form action="PrioritetGemtServlet" method="get" >
-            <p>Navn:<input type="text" id="navn" value=""></p>                      
+            <p>Navn:<input type="text" name="navn" value=""></p>                      
             <table>
                 <tr><th style="text-align: left">Fag</th><th>1a</th><th>1b</th><th>2a</th><th>2b</th></tr>    
             <c:forEach var="v" items="${valgfag}">
