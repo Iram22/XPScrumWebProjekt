@@ -42,9 +42,26 @@ public class Controller {
 
     private void gemFagIPuljer(String puljenavn, Object[] pulje)
     {
+        em.getTransaction().begin();
+        try
+        {
+           Query q = em.createNativeQuery("delete from puljer");
+        q.executeUpdate();
+        
+          em.getTransaction().commit();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }finally{
+            
         for (int i = 0; i < pulje.length; i++)
         {
             persist(new Puljer(((ValgfagResultat)pulje[i]).getFag().getId(), puljenavn));
+        }
+       // }catch (Exception e){
+            // tabellen er tom
+            em.close();
         }
     }
     
