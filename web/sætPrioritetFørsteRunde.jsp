@@ -11,17 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script>
-		$(function() {
-			var col, el;
-			$("input[type=radio]").click(function() {
-			   el = $(this);
-			   col = el.data("col");
-			   $("input[data-col=" + col + "]").prop("checked", false);
-			   el.prop("checked", true);
-			});
-		});
-	</script>
+        <script type="text/javascript" src='javascript/radiobuttonkontrol.js'></script>
         <title>JSP Page</title>
     </head>
     <body>
