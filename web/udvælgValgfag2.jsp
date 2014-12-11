@@ -10,44 +10,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-        <div id="wrapperHeader">
- <div id="header">
-  <img src="image/logo.jpg" alt="logo" />
- </div> 
-</div>
-
- 
-
-
-        <title>Udvælg valgfag 2. runde</title>
-        <script>
-            function flytTilPuljeA()
-            {
-                flytFag("valgfag", "puljeA");
-            }
-
-            function flytTilPuljeB()
-            {
-                flytFag("valgfag", "puljeB");
-            }
-
-            function flytFag(fra, til)
-            {
-                var select = document.getElementById(fra);
-                var x = document.getElementById(til);
-                var option = document.createElement("option");
-                option.text = select.value;
-                x.add(option);
-
-                select.remove(select.selectedIndex);
-
-            }
-
-        
-            
-
-        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+        <script src="javascript/beregn-utlifredshed.js"></script>
+        <script src="javascript/flyt-fag.js"></script>
     </head>
     <body>
 
@@ -72,7 +38,8 @@
 
         <br/>
 
-        <button onclick="beregn()"> Beregn Utilfredshed </button>
+        <button id="btn"> Beregn Utilfredshed </button>
+        <p id="test"></p>
 
     </body>
 </html>

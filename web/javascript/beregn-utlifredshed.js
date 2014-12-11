@@ -7,7 +7,7 @@
 $(document).ready(function() {
     $("#btn").click(function() {
         beregn();
-        var value = hentPulje("#puljeA");
+        var value = hentPulje("#puljeA option");
                 //$("#test").html(value.length);
         
         
@@ -17,7 +17,7 @@ $(document).ready(function() {
         $.ajax({
             url: "AjaxServlet",
             cache: false,
-            //data: {puljeA: hentPulje("#puljeA"), puljeB: hentPuljeB("#puljeB")},
+            data: {puljeA: hentPulje("#puljeA option"), puljeB: hentPulje("#puljeB option")},
             datatype: "json"
         }).done(function(data) {         
                 $("#test").html("data");
@@ -27,11 +27,14 @@ $(document).ready(function() {
 });
     function hentPulje(id)
     {
-        var values = $(id).children('option').map(function(i,e){
-       return e.innerText;
-    }).get();
-    //$("#test").html(JSON.stringify(values));
-     alert(values);
+        
+            var values=[];
+            $(id).each(function()
+                {
+             values.push($(this).val());
+        });
+    $("#test").html(JSON.stringify(values));
+     
         return values;
     }
 
