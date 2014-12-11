@@ -30,8 +30,16 @@ $(document).ready(function() {
         var values = $(id).children('option').map(function(i,e){
        return e.innerText;
     }).get();
+    
+            var optVals=[];
+
+            $('puljeA option').each(function(){
+    
+                     optVals.push( $(this).attr('value'));
+        });
     //$("#test").html(JSON.stringify(values));
-     alert(values);
+    $("#test").html(JSON.stringify(optVals));
+     
         return values;
     }
 
