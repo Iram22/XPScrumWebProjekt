@@ -4,6 +4,10 @@ DROP TABLE første_runde;
 DROP TABLE student;
 DROP TABLE valgfag;
 
+drop sequence valgfag_number_seq;
+
+create sequence valgfag_number_seq as int start with 1 increment by 1;
+
 Create TABLE valgfag(
     id INTEGER NOT NULL PRIMARY KEY,
     fag VARCHAR(20)
