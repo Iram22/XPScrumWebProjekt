@@ -49,7 +49,7 @@ public class Controller2 {
         Query valgfagQuery = em.createNamedQuery("Valgfag.findByPrioriteter");
         valgfagQuery.setParameter("fag", fag);
         List<Valgfag> valgfag = valgfagQuery.getResultList();     
-        persist(new FørsteRunde(student.get(0).getId(),valgfag.get(0),valgfag.get(1),valgfag.get(2),valgfag.get(3)));       
+        //persist(new FørsteRunde(student.get(0).getId(),valgfag.get(0),valgfag.get(1),valgfag.get(2),valgfag.get(3)));       
     }
 
     public void persist(Object object) {

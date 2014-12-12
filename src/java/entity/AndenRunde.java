@@ -25,14 +25,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Hanan
  */
 @Entity
-@Table(name = "F\u00d8RSTE_RUNDE")
+@Table(name = "ANDEN_RUNDE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "FørsteRunde.findAll", query = "SELECT f FROM FørsteRunde f"),
-     @NamedQuery(name = "FørsteRunde.findCount1", query = "Select distinct((Select count(r.førstePrioriteta) from FørsteRunde r where r.førstePrioriteta = :førstePrioriteta )+ (Select count(r.førstePrioritetb) from FørsteRunde r where r.førstePrioritetb = :førstePrioriteta)) from FørsteRunde r"),
-    @NamedQuery(name = "FørsteRunde.findCount2", query = "Select distinct((Select count(r.andenPrioriteta) from FørsteRunde r where r.andenPrioriteta = :andenPrioriteta )+ (Select count(r.andenPrioritetb) from FørsteRunde r where r.andenPrioritetb = :andenPrioriteta)) from FørsteRunde r"),
-    @NamedQuery(name = "FørsteRunde.findByStudentid", query = "SELECT f FROM FørsteRunde f WHERE f.studentid = :studentid")})
-public class FørsteRunde implements Serializable {
+    @NamedQuery(name = "AndenRunde.findAll", query = "SELECT a FROM AndenRunde a"),
+    @NamedQuery(name = "AndenRunde.findByStudentid", query = "SELECT a FROM AndenRunde a WHERE a.studentid = :studentid")})
+public class AndenRunde implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -55,22 +53,13 @@ public class FørsteRunde implements Serializable {
     @OneToOne(optional = false)
     private Student student;
 
-    public FørsteRunde() {
+    public AndenRunde() {
     }
 
-    public FørsteRunde(Integer studentid) {
+    public AndenRunde(Integer studentid) {
         this.studentid = studentid;
     }
 
-    public FørsteRunde(Integer studentid, Valgfag førstePrioriteta, Valgfag andenPrioriteta, Valgfag førstePrioritetb, Valgfag andenPrioritetb, Student student) {
-        this.studentid = studentid;
-        this.førstePrioriteta = førstePrioriteta;
-        this.andenPrioriteta = andenPrioriteta;
-        this.førstePrioritetb = førstePrioritetb;
-        this.andenPrioritetb = andenPrioritetb;
-        this.student = student;
-    }
-    
     public Integer getStudentid() {
         return studentid;
     }
@@ -129,10 +118,10 @@ public class FørsteRunde implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FørsteRunde)) {
+        if (!(object instanceof AndenRunde)) {
             return false;
         }
-        FørsteRunde other = (FørsteRunde) object;
+        AndenRunde other = (AndenRunde) object;
         if ((this.studentid == null && other.studentid != null) || (this.studentid != null && !this.studentid.equals(other.studentid))) {
             return false;
         }
@@ -141,7 +130,7 @@ public class FørsteRunde implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.F\u00f8rsteRunde[ studentid=" + studentid + " ]";
+        return "entity.AndenRunde[ studentid=" + studentid + " ]";
     }
     
 }
