@@ -21,17 +21,18 @@ import javax.persistence.Query;
  */
 public class UtilfredahedsBeregner {
     private EntityManager em;
-    //<editor-fold defaultstate="collapsed" desc=" beregnTilfredshed ">
+    
+    public UtilfredahedsBeregner(){}
+    
+    
     /**
       * Beregner student tilfredshed ud fra deres valg og deres pladsering i begge puljer,
       * jo flere valg som eksistere i samme pulje jo mere utilfreds studenten er.
       * Metoden tjekker begge puljer for valgets eksistense
       * 
       **/
-    public UtilfredahedsBeregner(){}
-    
     public List beregnTilfredshed(Object[] puljeA, Object[] puljeB){
-          
+          //<editor-fold defaultstate="collapsed" desc=" beregnTilfredshed ">
           em = Persistence.createEntityManagerFactory("XPScrumProjektPU").createEntityManager();
           Query query = em.createNamedQuery("F\u00f8rsteRunde.findAll");
           List<FørsteRunde> students = query.getResultList();
@@ -124,7 +125,7 @@ public class UtilfredahedsBeregner {
           utilfredseStudenter = sortList(utilfredseStudenter);
           return utilfredseStudenter;
           
-    }
+    }// </editor-fold>
   
     private boolean erIpuljen(int fag_id, Object[] pulje){
          boolean erIpuljen = false;
@@ -140,9 +141,9 @@ public class UtilfredahedsBeregner {
         return erIpuljen;
     }
     
-    //<editor-fold defaultstate="collapsed" desc=" sortList ">
+    
     public List sortList(List list){
-        
+        //<editor-fold defaultstate="collapsed" desc=" sortList ">
         List ekstrem = new ArrayList();
         List meget = new ArrayList();
         List mellem = new ArrayList();
@@ -195,7 +196,7 @@ public class UtilfredahedsBeregner {
         }
         return result;
         
-    }
+    }// </editor-fold>
     
     
 }

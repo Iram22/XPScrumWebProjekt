@@ -36,45 +36,45 @@ public class Controller {
 
     public void gemPuljerIdb(Object[] puljeA, Object[] puljeB)
     {
+        sletFraTabel("puljer");
         gemFagIPuljer("a", puljeA);
         gemFagIPuljer("b", puljeB);
     }
 
     private void gemFagIPuljer(String puljenavn, Object[] pulje)
     {
-        em.getTransaction().begin();
+        
+        for (int i = 0; i < pulje.length; i++)
+        {
+            persist(new Puljer(((ValgfagResultat)pulje[i]).getFag().getId(), puljenavn));
+        }
+       
+    }
+    
+    private void sletFraTabel(String tabel){
+        
+         em.getTransaction().begin();
         try
         {
-           Query q = em.createNativeQuery("delete from puljer");
-        q.executeUpdate();
+           Query q = em.createQuery("DELETE from "+tabel);
+        int sletet = q.executeUpdate();
         
           em.getTransaction().commit();
         } catch (Exception e)
         {
             e.printStackTrace();
             em.getTransaction().rollback();
-        }finally{
-            
-        for (int i = 0; i < pulje.length; i++)
+        } finally
         {
-            persist(new Puljer(((ValgfagResultat)pulje[i]).getFag().getId(), puljenavn));
-        }
-       // }catch (Exception e){
-            // tabellen er tom
             em.close();
         }
+        
+        
     }
-    
-    
     public ArrayList<ValgfagResultat> visResultat()
     {
        em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
-       
-       if(em == null)
-       {
-           System.out.println("i am null");
-       }
-
+      
         Query query = em.createNamedQuery("Valgfag.findAll");
         Query query2 = em.createNamedQuery("FørsteRunde.findCount1");
         Query query3 = em.createNamedQuery("FørsteRunde.findCount2");
