@@ -120,7 +120,7 @@ public class Controller {
     
      public void persist(Object object)
     {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("XPScrumProjektPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("XPScrumWebProjektPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try

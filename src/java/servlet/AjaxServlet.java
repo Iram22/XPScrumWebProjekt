@@ -34,8 +34,8 @@ public class AjaxServlet extends HttpServlet {
             throws ServletException, IOException {
     
         System.out.println("i am sout............................................");
-        String[] json = request.getParameterValues("puljeA[]");
-        System.out.println(json[0]);
+        String[] puljeA = request.getParameterValues("puljeA[]");
+        String[] puljeB = request.getParameterValues("puljeB[]");
        
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -44,6 +44,8 @@ public class AjaxServlet extends HttpServlet {
             out.println("I am a test");
         }
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
