@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,17 +14,20 @@
     </head>
     <body>
         <div style=" border: 1px solid; width: 15em; height: 18em ">
-        <list>
-            <li>Test</li>
-            <li>Test2
-            <li>Test2</li>
+         
+         <list>
+         <c:forEach var="v" items="${valgfag}">
+                <li>${v.fag.fag}</li>
+            </c:forEach> 
+            
         </list>
         </div>
         <p>
             Nyt valgfag
         </p>
         <p>
-            Titel <input type="text" id="titel"></input> Underviser <input type="text" id="underviser"></input>
+            Titel <input type="text" id="titel"></input> 
+            Underviser <input type="text" id="underviser"></input>
         </p>
         <p>Beskrivelse</p>
         <textarea id="beskrivelse" type="text" style="width: 30em; height: 15em; border: 1px solid;"></textarea>
