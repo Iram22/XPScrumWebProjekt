@@ -14,8 +14,8 @@
         <script>
              $(document).ready(function(){
             $("#gem").click(function(){
-            // $("#date").load("DateServlet"); 
-           gemForslag();
+            gemForslag();
+         
     });
     });
         function gemForslag(){
@@ -28,17 +28,15 @@
                 datatype: "text"
                 
             }).done(function(data){
-             // $("#date").html(data);
-             
              
               $("#titel").val("");
               $("#underviser").val("");
               $("#beskrivelse").val("");
-              
-              
-              
+              document.location.reload();
             });
+             
         }
+        
         
         
             

@@ -43,10 +43,10 @@ public class gemValgfagForslagServlet extends HttpServlet {
             String titel = request.getParameter("titel");
             String underviser = request.getParameter("underviser");
             String beskrivelse = request.getParameter("beskrivelse");
-            
             c.gemForslag(index,titel, underviser, beskrivelse);
             System.out.println("gemt ---------------------------------------------------------------------");
-           //request.getRequestDispatcher("foreslåValgfag.jsp").forward(request, response);
+            
+            
         }
     }
 
