@@ -48,5 +48,3 @@ insert into puljer values
 (5, 'b'),
 (6, 'b');
 
-select * from valgfag
-delete from valgfag where id > 8
