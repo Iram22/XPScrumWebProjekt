@@ -32,6 +32,7 @@
               $("#titel").val("");
               $("#underviser").val("");
               $("#beskrivelse").val("");
+              $("#besked").val("")
               document.location.reload();
             });
              
@@ -64,7 +65,7 @@
         <p>Beskrivelse</p>
         <textarea id="beskrivelse" type="text" style="width: 30em; height: 15em; border: 1px solid;"></textarea>
         <p></p>
-        <label style="margin-right: 18em">Besked</label> <button type="button" id="gem">Gem</button>
+        <label id="besked" style="margin-right: 18em">Lave en forslag til et valgfag</label> <button type="button" id="gem">Gem</button>
        
         
         

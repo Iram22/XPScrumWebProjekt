@@ -36,18 +36,18 @@ public class gemValgfagForslagServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            System.out.println("hello from gem servlet--------------------------------------------------------------------------------");
             Controller99 c = new Controller99();
-            int index = Integer.parseInt(request.getParameter("id")) + 1;
-            System.out.println("index was "+ index +" -----------------------------------------------------------------------------");
             String titel = request.getParameter("titel");
             String underviser = request.getParameter("underviser");
             String beskrivelse = request.getParameter("beskrivelse");
-            c.gemForslag(index,titel, underviser, beskrivelse);
-            System.out.println("gemt ---------------------------------------------------------------------");
-            
-            
+            try{
+            c.gemForslag(titel, underviser, beskrivelse);
+            out.println("din forslag er nu gemt");
+            }catch (Exception e){
+            out.println("din forslag findes i forvejen");
+            }
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

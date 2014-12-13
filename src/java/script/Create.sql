@@ -8,7 +8,7 @@ DROP TABLE valgfag;
 
 DROP SEQUENCE TEST.valgfag_number_seq restrict;
 
-create sequence TEST.valgfag_number_seq as int start with 9 increment by 1;
+create sequence TEST.valgfag_number_seq as int start with 8 increment by 1;
 
 
 Create TABLE valgfag(

@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "VALGFAG")
 @XmlRootElement
-//@SequenceGenerator(name = "VFSEQ", sequenceName = "valgfag_number_seq", allocationSize = 1)
+@SequenceGenerator(name = "VFSEQ", sequenceName = "valgfag_number_seq", allocationSize = 1)
 @NamedQueries({
     @NamedQuery(name = "Valgfag.findAll", query = "SELECT v FROM Valgfag v"),
     @NamedQuery(name = "Valgfag.findById", query = "SELECT v FROM Valgfag v WHERE v.id = :id"),
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Valgfag implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    //@GeneratedValue(generator = "VFSEQ", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "VFSEQ", strategy = GenerationType.SEQUENCE)
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
@@ -58,8 +58,7 @@ public class Valgfag implements Serializable {
     public Valgfag() {
     }
     
-    public Valgfag(int id, String titel, String underviser, String beskrivelse){
-        this.id = id;
+    public Valgfag(String titel, String underviser, String beskrivelse){
         this.fag = titel;
         this.underviser = underviser;
         this.beskrivelse = beskrivelse;

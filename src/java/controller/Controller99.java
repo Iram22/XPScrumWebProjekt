@@ -24,9 +24,9 @@ public class Controller99 {
         em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
     }
     
-    public void gemForslag(int id,String titel, String underviser, String beskrivelse){
+    public void gemForslag(String titel, String underviser, String beskrivelse){
 
-        Valgfag v = new Valgfag(id, titel, underviser, beskrivelse);
+        Valgfag v = new Valgfag(titel, underviser, beskrivelse);
          em.getTransaction().begin();
         try
         {
