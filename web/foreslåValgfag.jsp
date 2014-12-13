@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="/XPScrumWebProjekt/style/css/default.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
         <script>
@@ -46,11 +47,14 @@
         <title>Valgfag Forslag</title>
     </head>
     <body>
-        <div style=" border: 1px solid; width: 15em; height: 18em ">
+        <div id="banner"></div>
+        <div id="main_menubar">log ud</div>
+        <div id="mid">
+            <div id="valgfagList" >
          
             <list id="list">
          <c:forEach var="v" items="${valgfag}">
-                <li>${v.fag.fag}</li>
+             <li class="li">${v.fag.fag}</li>
             </c:forEach> 
             
         </list>
@@ -67,7 +71,12 @@
         <p></p>
         <label id="besked" style="margin-right: 18em">Lave en forslag til et valgfag</label> <button type="button" id="gem">Gem</button>
        
-        
-        
+        </div>
+        <div id="leftside-spacer"></div>
+        <div id="leftside-panel">
+            <a href="main.jsp">Back to main page</a><br/>
+        </div>
+        <div id="spacer"></div>
+        <div id="footer">Cph Business Academy, Lundtoftevej 93, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67  kontakt@cphbank.dk  CVR: 4545 8181  EAN: 5798 000 56 0550</div>
     </body>
 </html>
