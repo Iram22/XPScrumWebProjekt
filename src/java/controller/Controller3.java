@@ -9,6 +9,7 @@ package controller;
 import entity.Valgfag;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -23,10 +24,25 @@ public class Controller3 {
         em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
     }
     
-    public void gemForslag(String titel, String underviser, String beskrivelse){
+    public void gemForslag(int id,String titel, String underviser, String beskrivelse){
+
+        Valgfag v = new Valgfag(id, titel, underviser, beskrivelse);
+         em.getTransaction().begin();
+        try
+        {
+          em.persist(v);
         
+          em.getTransaction().commit();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally
+        {
+            em.close();
+        }
         
-        
+
     }
     
 }

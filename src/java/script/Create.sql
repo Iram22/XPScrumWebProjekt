@@ -4,13 +4,17 @@ DROP TABLE første_runde;
 DROP TABLE student;
 DROP TABLE valgfag;
 
-DROP SEQUENCE valgfag_number_seq restrict;
 
-create sequence valgfag_number_seq as int start with 1 increment by 1;
+DROP SEQUENCE TEST.valgfag_number_seq restrict;
+
+create sequence TEST.valgfag_number_seq as int start with 9 increment by 1;
+
 
 Create TABLE valgfag(
     id INTEGER NOT NULL PRIMARY KEY,
-    fag VARCHAR(20)
+    fag VARCHAR(20),
+    underviser varchar(30),
+    beskrivelse varchar(500)
 );
 
 Create TABLE student(

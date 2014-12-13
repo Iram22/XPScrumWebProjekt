@@ -15,14 +15,17 @@
     });
         function gemForslag(){
             $.ajax({
-                url:"ValgfagForslag",
+                url:"gemValgfagForslag",
                 cache: false,
                 data:{titel: $("#titel").val(), underviser: $("#underviser").val(), beskrivelse: $("#beskrivelse").val()},
                 datatype: "text"
                 
             }).done(function(data){
-              $("#date").html(data);
-                
+             // $("#date").html(data);
+              document.getElementById("#titel").innerHTML = "";  
+              document.getElementById("#underviser").innerHTML = "";;  
+              document.getElementById("#beskrivelse").innerHTML = "";;
+              $get('ValgfagForslag',function(){});
             });
         }
         

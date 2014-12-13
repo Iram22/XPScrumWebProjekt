@@ -4,16 +4,14 @@ DELETE from student;
 DELETE from valgfag;
 
 INSERT into valgfag values 
-(1, 'C#'),
-(2, 'Python'),
-(3, 'Haskel'),
-(4, 'Gaming'),
-(5, 'Android'),
-(6, 'Python'),
-(7, 'WebProgrammering'),
-(8, 'Grafik'),
-(9, 'Pascal'),
-(10, 'C');
+(1, 'C#','LAM','helloooooooooooooooooooooooooo there'),
+(2, 'Python','PELO','glædelig jul'),
+(3, 'Haskel','CHU','godt nytår'),
+(4, 'Gaming','AKA','et eller andet'),
+(5, 'Android','LAM','yahoo'),
+(6, 'Python','TOR','hahahahahahaha'),
+(7, 'WebProgrammering','PELO','LMAO'),
+(8, 'Grafik','Henrik','YOLO');
 
 
 INSERT into student values
@@ -40,8 +38,6 @@ insert into udvalgtefag1runde values
 (5),
 (6),
 (7),
-(8),
-(9),
-(10);
+(8);
 
-select * from første_runde 
+select * from valgfag
