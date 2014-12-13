@@ -1,3 +1,4 @@
+DROP TABLE anden_runde;
 DROP TABLE udvalgtefag1runde;
 DROP TABLE puljer;
 DROP TABLE første_runde;
@@ -38,4 +39,12 @@ Create TABLE puljer(
 
 Create Table udvalgtefag1runde(
  valgfagId INTEGER REFERENCES valgfag(id) NOT NULL primary key
+);
+
+Create TABLE anden_runde(
+    studentId INTEGER REFERENCES student(id) NOT NULL PRIMARY KEY,
+    første_prioritetA INTEGER REFERENCES valgfag(id),
+    anden_prioritetA INTEGER REFERENCES valgfag(id),
+    første_prioritetB INTEGER REFERENCES valgfag(id),
+    anden_prioritetB INTEGER REFERENCES valgfag(id)   
 );

@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Iram
+ * @author Hanan
  */
 @Entity
 @Table(name = "STUDENT")
@@ -43,6 +43,8 @@ public class Student implements Serializable {
     private String navn;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
     private FørsteRunde førsteRunde;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
+    private AndenRunde andenRunde;
 
     public Student() {
     }
@@ -73,6 +75,14 @@ public class Student implements Serializable {
 
     public void setFørsteRunde(FørsteRunde førsteRunde) {
         this.førsteRunde = førsteRunde;
+    }
+
+    public AndenRunde getAndenRunde() {
+        return andenRunde;
+    }
+
+    public void setAndenRunde(AndenRunde andenRunde) {
+        this.andenRunde = andenRunde;
     }
 
     @Override

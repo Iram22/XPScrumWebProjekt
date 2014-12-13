@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Iram
+ * @author Hanan
  */
 @Entity
 @Table(name = "UDVALGTEFAG1RUNDE")

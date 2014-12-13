@@ -6,7 +6,7 @@
 
 package servlet;
 
-import controller.Controller3;
+import controller.Controller99;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,7 +37,7 @@ public class gemValgfagForslagServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             System.out.println("hello from gem servlet--------------------------------------------------------------------------------");
-           Controller3 c = new Controller3();
+            Controller99 c = new Controller99();
             int index = Integer.parseInt(request.getParameter("id")) + 1;
             System.out.println("index was "+ index +" -----------------------------------------------------------------------------");
             String titel = request.getParameter("titel");

@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Iram
+ * @author Hanan
  */
 @Entity
 @Table(name = "PULJER")
@@ -52,9 +52,8 @@ public class Puljer implements Serializable {
         this.valgfagid = valgfagid;
         this.pulje = pulje;
     }
-    
-    
 
+    
     public Puljer(Integer valgfagid) {
         this.valgfagid = valgfagid;
     }

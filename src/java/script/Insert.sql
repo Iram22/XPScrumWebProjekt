@@ -40,4 +40,10 @@ insert into udvalgtefag1runde values
 (7),
 (8);
 
-select * from valgfag
+insert into puljer values
+(1,'a'),
+(2,'a'),
+(3, 'a'),
+(4, 'b'),
+(5, 'b'),
+(6, 'b');
