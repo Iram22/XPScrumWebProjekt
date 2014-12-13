@@ -40,27 +40,7 @@
             });
         }
         
-        function reload(){
-            
-        $.ajax({
-                
-                url:"ValgfagForslag",
-                cache: false,
-                datatype:'text',
-                success: function(data){
-                list = document.getElementById("list")
-                var valgfag = data;
-                for(var i in valgfag)
-                {
-                    var li = document.createE
-                    list.appendChild(document.createElement("LI"): i.fag.fag);
-                }
-                
-            }
-        });
-            
-            
-        }
+        
             
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
