@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,175 +15,116 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Iram
+ * @author Chris
  */
 @Entity
 @Table(name = "VALGFAG")
 @XmlRootElement
-@SequenceGenerator(name = "VFSEQ", sequenceName = "valgfag_number_seq")
-@NamedQueries(
-{
+//@SequenceGenerator(name = "VFSEQ", sequenceName = "valgfag_number_seq", allocationSize = 1)
+@NamedQueries({
     @NamedQuery(name = "Valgfag.findAll", query = "SELECT v FROM Valgfag v"),
     @NamedQuery(name = "Valgfag.findById", query = "SELECT v FROM Valgfag v WHERE v.id = :id"),
     @NamedQuery(name = "Valgfag.findByFag", query = "SELECT v FROM Valgfag v WHERE v.fag = :fag"),
-    @NamedQuery(name = "Valgfag.findByPrioriteter", query = "SELECT v FROM Valgfag v WHERE v.fag IN :fag")})
-public class Valgfag implements Serializable {
+    @NamedQuery(name = "Valgfag.findByUnderviser", query = "SELECT v FROM Valgfag v WHERE v.underviser = :underviser"),
+    @NamedQuery(name = "Valgfag.findByBeskrivelse", query = "SELECT v FROM Valgfag v WHERE v.beskrivelse = :beskrivelse")})
 
+public class Valgfag implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(generator = "VFSEQ", strategy = GenerationType.SEQUENCE)
+    //@GeneratedValue(generator = "VFSEQ", strategy = GenerationType.SEQUENCE)
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
     private Integer id;
+    
     @Size(max = 20)
     @Column(name = "FAG")
     private String fag;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "valgfag")
-    private Puljer puljer;
-    @OneToMany(mappedBy = "f\u00f8rstePrioriteta")
-    private Collection<FørsteRunde> førsteRundeCollection;
-    @OneToMany(mappedBy = "andenPrioriteta")
-    private Collection<FørsteRunde> førsteRundeCollection1;
-    @OneToMany(mappedBy = "f\u00f8rstePrioritetb")
-    private Collection<FørsteRunde> førsteRundeCollection2;
-    @OneToMany(mappedBy = "andenPrioritetb")
-    private Collection<FørsteRunde> førsteRundeCollection3;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "valgfag")
-    private Udvalgtefag1runde udvalgtefag1runde;
+    @Size(max = 30)
+    @Column(name = "UNDERVISER")
+    private String underviser;
+    @Size(max = 500)
+    @Column(name = "BESKRIVELSE")
+    private String beskrivelse;
 
-    public Valgfag()
-    {
+    public Valgfag() {
+    }
+    
+    public Valgfag(int id, String titel, String underviser, String beskrivelse){
+        this.id = id;
+        this.fag = titel;
+        this.underviser = underviser;
+        this.beskrivelse = beskrivelse;
+        
     }
 
-    public Valgfag(Integer id)
-    {
+    public Valgfag(Integer id) {
         this.id = id;
     }
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getFag()
-    {
+    public String getFag() {
         return fag;
     }
 
-    public void setFag(String fag)
-    {
+    public void setFag(String fag) {
         this.fag = fag;
     }
 
-    public Puljer getPuljer()
-    {
-        return puljer;
+    public String getUnderviser() {
+        return underviser;
     }
 
-    public void setPuljer(Puljer puljer)
-    {
-        this.puljer = puljer;
+    public void setUnderviser(String underviser) {
+        this.underviser = underviser;
     }
 
-    @XmlTransient
-    public Collection<FørsteRunde> getFørsteRundeCollection()
-    {
-        return førsteRundeCollection;
+    public String getBeskrivelse() {
+        return beskrivelse;
     }
 
-    public void setFørsteRundeCollection(Collection<FørsteRunde> førsteRundeCollection)
-    {
-        this.førsteRundeCollection = førsteRundeCollection;
-    }
-
-    @XmlTransient
-    public Collection<FørsteRunde> getFørsteRundeCollection1()
-    {
-        return førsteRundeCollection1;
-    }
-
-    public void setFørsteRundeCollection1(Collection<FørsteRunde> førsteRundeCollection1)
-    {
-        this.førsteRundeCollection1 = førsteRundeCollection1;
-    }
-
-    @XmlTransient
-    public Collection<FørsteRunde> getFørsteRundeCollection2()
-    {
-        return førsteRundeCollection2;
-    }
-
-    public void setFørsteRundeCollection2(Collection<FørsteRunde> førsteRundeCollection2)
-    {
-        this.førsteRundeCollection2 = førsteRundeCollection2;
-    }
-
-    @XmlTransient
-    public Collection<FørsteRunde> getFørsteRundeCollection3()
-    {
-        return førsteRundeCollection3;
-    }
-
-    public void setFørsteRundeCollection3(Collection<FørsteRunde> førsteRundeCollection3)
-    {
-        this.førsteRundeCollection3 = førsteRundeCollection3;
-    }
-
-    public Udvalgtefag1runde getUdvalgtefag1runde()
-    {
-        return udvalgtefag1runde;
-    }
-
-    public void setUdvalgtefag1runde(Udvalgtefag1runde udvalgtefag1runde)
-    {
-        this.udvalgtefag1runde = udvalgtefag1runde;
+    public void setBeskrivelse(String beskrivelse) {
+        this.beskrivelse = beskrivelse;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Valgfag))
-        {
+        if (!(object instanceof Valgfag)) {
             return false;
         }
         Valgfag other = (Valgfag) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
-        {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "entity.Valgfag[ id=" + id + " ]";
     }
-
+    
 }
