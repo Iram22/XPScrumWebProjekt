@@ -5,7 +5,7 @@
  */
 package controller;
 
-
+import entity.AndenRunde;
 import entity.Puljer;
 import entity.Valgfag;
 import java.util.ArrayList;
@@ -36,12 +36,11 @@ public class Controller3 {
 
         for (Puljer p : puljer) {
             resultat.add(p.getValgfag());
-            
+
         }
         return resultat;
     }
-    
-    
+
     public ArrayList<Valgfag> visPuljeB() {
 
         Query query = em.createNamedQuery("Puljer.findByPulje");
@@ -52,16 +51,36 @@ public class Controller3 {
 
         for (Puljer p : puljer) {
             resultat.add(p.getValgfag());
-        
+
         }
         return resultat;
     }
-    
-    
-    
-   // public void gemValgAndenRunde(AndenRunde andenRunde){
-    
-    //}
 
+    public void gemValgAndenRunde(AndenRunde andenRunde) {
+        // begin transaction 
+        em.getTransaction().begin();
+        if (!em.contains(andenRunde)) {
+            // persist object - add to entity manager
+            em.persist(andenRunde);
+            // flush em - save to DB
+            em.flush();
+        }
+        // commit transaction at all
+        em.getTransaction().commit();
+        
+    }
+
+    public Valgfag hentFagViaID(int id) {
+
+        Query query = em.createNamedQuery("Valgfag.findById");
+        query.setParameter("id", id);
+        Collection<Valgfag> fag = query.getResultList();
+
+        ArrayList<Valgfag> valgfag = new ArrayList();
+
+        for (Valgfag v : fag) {
+            valgfag.add(v);
+        }
+        return valgfag.get(0);
+    }
 }
-

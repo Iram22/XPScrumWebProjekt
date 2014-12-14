@@ -6,6 +6,8 @@
 package servlet;
 
 import controller.Controller3;
+import entity.AndenRunde;
+import entity.Valgfag;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,16 +36,22 @@ public class ServletHanan extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            Controller3 controller3 = new Controller3();
-          //  controller3.gemValgAndenRunde();
-            
-            request.getParameter("førsteprioritetA");
-            request.getParameter("andenprioritetA");
-            request.getParameter("førsteprioritetB");
-            request.getParameter("andenprioritetB");
 
-        }
+            int fpA = Integer.parseInt(request.getParameter("førsteprioritetA"));
+            int apA = Integer.parseInt(request.getParameter("andenprioritetA"));
+            int fpB = Integer.parseInt(request.getParameter("førsteprioritetB"));
+            int apB = Integer.parseInt(request.getParameter("andenprioritetB"));
+        
+            Controller3 controller3 = new Controller3();
+           
+            Valgfag valgFPA = controller3.hentFagViaID(fpA);
+            Valgfag valgAPA = controller3.hentFagViaID(apA);
+            Valgfag valgFPB = controller3.hentFagViaID(fpB);
+            Valgfag valgAPB = controller3.hentFagViaID(apB);
+
+            AndenRunde resultat = new AndenRunde(3, valgFPA, valgAPA , valgFPB, valgAPB);
+            controller3.gemValgAndenRunde(resultat);
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -17,7 +17,7 @@
     </head>
     <body>
         
-  <form id="myform" action="">
+  <form id="myform" action="ServletHanan">
         <table>
             <tr>
                 <td><b>Pulje A</b></td>

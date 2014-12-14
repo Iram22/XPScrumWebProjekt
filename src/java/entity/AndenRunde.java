@@ -60,6 +60,14 @@ public class AndenRunde implements Serializable {
         this.studentid = studentid;
     }
 
+    public AndenRunde(Integer studentid, Valgfag førstePrioriteta, Valgfag andenPrioriteta, Valgfag førstePrioritetb, Valgfag andenPrioritetb) {
+        this.studentid = studentid;
+        this.førstePrioriteta = førstePrioriteta;
+        this.andenPrioriteta = andenPrioriteta;
+        this.førstePrioritetb = førstePrioritetb;
+        this.andenPrioritetb = andenPrioritetb;
+    }
+
     public Integer getStudentid() {
         return studentid;
     }
