@@ -6,8 +6,11 @@
 
 package servlet;
 
+import com.google.gson.Gson;
+import controller.Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,15 +36,19 @@ public class AjaxServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     
-        System.out.println("i am sout............................................");
         String[] puljeA = request.getParameterValues("puljeA[]");
         String[] puljeB = request.getParameterValues("puljeB[]");
+        
+        Controller controller = new Controller();
+        List list = controller.beregnTilfredshed(puljeA, puljeB);
+        
        
-        response.setContentType("application/json;charset=UTF-8");
+        response.setContentType("json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             //System.out.println("heheh");
-            out.println("I am a test");
+            String gson = new Gson().toJson(list);
+            out.println(gson);
         }
     }
     

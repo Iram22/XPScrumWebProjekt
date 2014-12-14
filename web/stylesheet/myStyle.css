@@ -1,0 +1,81 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 13, 2014, 12:12:58 PM
+    Author     : Iram
+*/
+body
+{
+  width: 100%;
+  margin: 0px;  
+}
+
+#main
+{
+  width:80%;   
+  margin-left:20%;
+  margin-right:20%;
+  margin-top:5em;
+}
+
+.list
+{
+    float:left;
+    margin:1em;
+    
+}
+
+#valgfag
+{
+    margin-top:1em;
+    
+}
+
+#puljeA
+{
+    margin-top:1em;
+    
+}
+
+#puljeB
+{
+    margin-top:1em;
+    
+}
+
+#flyt
+{
+    float:left;
+    margin:4em 2em;
+    
+}
+
+#beregn
+{
+    clear:both;
+    float:left;
+    margin-left:35em;
+    
+}
+
+#tab
+{
+    clear:both;
+    margin-left:20%;
+    margin-top:5em;
+}
+
+td
+{
+    padding: 0.2em 0.5em;
+    
+}
+
+#gem
+{
+    margin-left:50%;
+    
+}

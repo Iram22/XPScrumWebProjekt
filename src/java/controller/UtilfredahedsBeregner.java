@@ -33,7 +33,7 @@ public class UtilfredahedsBeregner {
       **/
     public List beregnTilfredshed(Object[] puljeA, Object[] puljeB){
           //<editor-fold defaultstate="collapsed" desc=" beregnTilfredshed ">
-          em = Persistence.createEntityManagerFactory("XPScrumProjektPU").createEntityManager();
+          em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
           Query query = em.createNamedQuery("F\u00f8rsteRunde.findAll");
           List<FørsteRunde> students = query.getResultList();
           List <String> utilfredseStudenter = new ArrayList();

@@ -6,20 +6,15 @@
 package controller;
 
 import dto.ValgfagResultat;
-import entity.FørsteRunde;
 import entity.Puljer;
-import entity.Student;
 import entity.Valgfag;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.swing.DefaultListModel;
 
 /**
  *
@@ -34,11 +29,12 @@ public class Controller {
         em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
     }
 
-    public void gemPuljerIdb(Object[] puljeA, Object[] puljeB)
+    public void gemPuljerIdb(String[] puljeA, String[] puljeB)
     {
         sletFraTabel("puljer");
-        gemFagIPuljer("a", puljeA);
-        gemFagIPuljer("b", puljeB);
+        
+        gemFagIPuljer("a", TilValfagResultat(puljeA));
+        gemFagIPuljer("b", TilValfagResultat(puljeB));
     }
 
     private void gemFagIPuljer(String puljenavn, Object[] pulje)
@@ -102,10 +98,13 @@ public class Controller {
       * Metoden tjekker begge puljer for valgets eksistense, hvis valget eksistere i ingen af puljer
       * stiger utilfredshed også
       **/
-    public List beregnTilfredshed(Object[] puljeA, Object[] puljeB){
+    public List beregnTilfredshed(String[] puljeA, String[] puljeB){
         
         UtilfredahedsBeregner utb = new UtilfredahedsBeregner();
-        return utb.beregnTilfredshed(puljeA, puljeB);
+        Object[] puljeAResultat = TilValfagResultat(puljeA);
+        Object[] puljeBResultat = TilValfagResultat(puljeB);
+        
+        return utb.beregnTilfredshed(puljeAResultat, puljeBResultat);
        
     }
  
@@ -136,5 +135,30 @@ public class Controller {
             em.close();
         }
     }
-    
+     
+     public Object[] TilValfagResultat(String[] pulje)
+     {       
+         em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
+         ArrayList<ValgfagResultat> valgfagResultat = new ArrayList();
+         for(int i = 0 ; i < pulje.length; i++)
+         {
+             String[] parts = pulje[i].split("[,\\s]+");
+             String fag = parts[0];
+             System.out.println("Fag: " + fag);
+             //Hent valgfag fra db
+             Query query = em.createNamedQuery("Valgfag.findByFag");
+             query.setParameter("fag", fag); 
+             System.out.println("length: " + query.getResultList().size());
+             Valgfag valgfag = (Valgfag) query.getResultList().get(0);
+             int prioritet1 = Integer.parseInt(parts[1]);
+             int prioritet2 = Integer.parseInt(parts[1]);
+             //Lav et objekt
+             ValgfagResultat resultat = new ValgfagResultat(valgfag, prioritet1, prioritet2);
+             //tilføj til arraylisten
+             valgfagResultat.add(resultat);
+             System.out.println(fag + "I am added. Yayyyyy");
+             
+         }
+         return valgfagResultat.toArray();   
+     }  
 }

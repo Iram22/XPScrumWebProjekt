@@ -14,13 +14,13 @@ import entity.Valgfag;
  */
 public class ValgfagResultat {
     Valgfag fag;
-    int priotet1;
-    int priotet2;
+    int prioritet1;
+    int prioritet2;
 
     public ValgfagResultat(Valgfag fag, int priotet1, int priotet2) {
         this.fag = fag;
-        this.priotet1 = priotet1;
-        this.priotet2 = priotet2;
+        this.prioritet1 = priotet1;
+        this.prioritet2 = priotet2;
     }
 
     public Valgfag getFag() {
@@ -31,25 +31,25 @@ public class ValgfagResultat {
         this.fag = fag;
     }
 
-    public int getPriotet1() {
-        return priotet1;
+    public int getPrioritet1() {
+        return prioritet1;
     }
 
-    public void setPriotet1(int priotet1) {
-        this.priotet1 = priotet1;
+    public void setPrioritet1(int prioritet1) {
+        this.prioritet1 = prioritet1;
     }
 
-    public int getPriotet2() {
-        return priotet2;
+    public int getPrioritet2() {
+        return prioritet2;
     }
 
-    public void setPriotet2(int priotet2) {
-        this.priotet2 = priotet2;
+    public void setPrioritet2(int prioritet2) {
+        this.prioritet2 = prioritet2;
     }
 
     @Override
     public String toString() {
-        return fag.getFag() + ", " + priotet1 + ", " + priotet2;
+        return fag.getFag() + ", " + prioritet1 + ", " + prioritet2;
     }
     
     

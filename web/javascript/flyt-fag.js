@@ -5,24 +5,48 @@
  */
 
 function flytTilPuljeA()
-            {
-                flytFag("valgfag", "puljeA");
-            }
+{
+    flytFag("valgfag", "puljeA");
+}
 
-            function flytTilPuljeB()
-            {
-                flytFag("valgfag", "puljeB");
-            }
+function flytTilPuljeB()
+{
+    flytFag("valgfag", "puljeB");
+}
 
-            function flytFag(fra, til)
-            {
-                var select = document.getElementById(fra);
-                var x = document.getElementById(til);
-                var option = document.createElement("option");
-                option.text = select.value;
-                option.value = select.value;
-                x.add(option);
-                select.remove(select.selectedIndex);
-            }
+function flytTilValgfag()
+{
+    var fra = "puljeB";
+    if(!!document.getElementById("puljeA").value)
+    {
+        fra = "puljeA";
+    }
+    flytFag(fra, "valgfag");
+    
+}
 
-          
+function flytTilA()
+{
+    flytFag("puljeB", "puljeA");
+}
+
+function flytTilB()
+{
+    flytFag("puljeA", "puljeB");
+}
+
+
+function flytFag(fra, til)
+{
+    var select = document.getElementById(fra);
+    var x = document.getElementById(til);
+    var option = document.createElement("option");
+    option.text = select.value;
+    option.value = select.value;
+    x.add(option);
+    select.remove(select.selectedIndex);
+}
+
+
+
+
