@@ -47,6 +47,8 @@ public class SætPrioritetFørsteRundeServlet extends HttpServlet {
         request.setAttribute("count", count);
         request.setAttribute("valgfag", valgfag);
         
+        
+        
         request.getRequestDispatcher("sætPrioritetFørsteRunde.jsp").forward(request, response);
     }
 

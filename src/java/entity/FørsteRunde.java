@@ -62,6 +62,16 @@ public class FørsteRunde implements Serializable {
         this.studentid = studentid;
     }
 
+    public FørsteRunde(Integer studentid, Valgfag førstePrioriteta, Valgfag andenPrioriteta, Valgfag førstePrioritetb, Valgfag andenPrioritetb, Student student) {
+        this.studentid = studentid;
+        this.førstePrioriteta = førstePrioriteta;
+        this.andenPrioriteta = andenPrioriteta;
+        this.førstePrioritetb = førstePrioritetb;
+        this.andenPrioritetb = andenPrioritetb;
+        this.student = student;
+    }
+
+    
     public Integer getStudentid() {
         return studentid;
     }

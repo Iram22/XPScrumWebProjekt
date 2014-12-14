@@ -6,6 +6,8 @@
 
 package controller;
 
+import entity.FørsteRunde;
+import entity.Student;
 import entity.Udvalgtefag1runde;
 import entity.Valgfag;
 import java.util.ArrayList;
@@ -16,8 +18,10 @@ import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.UserTransaction;
 
 /**
@@ -40,34 +44,48 @@ public class Controller2 {
             valgfag.add(id.getValgfag());
             System.out.println(id.getValgfag().getFag());
         }
-        em.clear();
         return valgfag;
     }
 
-    public void persist(Object object)
+    public void gemPrioriteterIDB(String navn, String a1, String a2, String b1, String b2)
     {
-        /* Add this to the deployment descriptor of this module (e.g. web.xml, ejb-jar.xml):
-         * <persistence-context-ref>
-         * <persistence-context-ref-name>persistence/LogicalName</persistence-context-ref-name>
-         * <persistence-unit-name>XPScrumWebProjektPU</persistence-unit-name>
-         * </persistence-context-ref>
-         * <resource-ref>
-         * <res-ref-name>UserTransaction</res-ref-name>
-         * <res-type>javax.transaction.UserTransaction</res-type>
-         * <res-auth>Container</res-auth>
-         * </resource-ref> */
+        Query studentQuery = em.createNamedQuery("Student.findByNavn");
+        studentQuery.setParameter("navn", navn);
+        List<Student> student = studentQuery.getResultList();
+        Query valgfag1aQuery = em.createNamedQuery("Valgfag.findByFag");
+        valgfag1aQuery.setParameter("fag", a1);
+        List<Valgfag> valgfag1a = valgfag1aQuery.getResultList();
+        Query valgfag1bQuery = em.createNamedQuery("Valgfag.findByFag");
+        valgfag1bQuery.setParameter("fag", b1);
+        List<Valgfag> valgfag1b = valgfag1bQuery.getResultList();
+        Query valgfag2aQuery = em.createNamedQuery("Valgfag.findByFag");
+        valgfag2aQuery.setParameter("fag", a2);
+        List<Valgfag> valgfag2a = valgfag2aQuery.getResultList();
+        Query valgfag2bQuery = em.createNamedQuery("Valgfag.findByFag");
+        valgfag2bQuery.setParameter("fag", b2);
+        List<Valgfag> valgfag2b = valgfag2bQuery.getResultList();
+        System.out.println(""+student.get(0).getId() + valgfag1a.get(0) + valgfag2a.get(0) + valgfag1b.get(0) + valgfag2b.get(0) + student.get(0));
+        
+        persist(new FørsteRunde(student.get(0).getId(),valgfag1a.get(0),valgfag2a.get(0),valgfag1b.get(0),valgfag2b.get(0),student.get(0)));
+               
+        
+    }
+
+    public void persist(Object object) {
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("XPScrumWebProjektPU");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
         try
         {
-            Context ctx = new InitialContext();
-            UserTransaction utx = (UserTransaction) ctx.lookup("java:comp/env/UserTransaction");
-            utx.begin();
-            em.joinTransaction();
             em.persist(object);
-            utx.commit();
+            em.getTransaction().commit();
         } catch (Exception e)
         {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally
+        {
+            em.close();
         }
     }
     

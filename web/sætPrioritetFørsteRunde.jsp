@@ -13,13 +13,23 @@
         <title>JSP Page</title>
     </head>
     <body>
+
+        <form action="PrioritetGemtServlet" method="get" >
+            <p>Navn:<input type="text" name="navn" value=""></p>                      
             <table>
+                <tr><th style="text-align: left">Fag</th><th>1a</th><th>1b</th><th>2a</th><th>2b</th></tr>    
             <c:forEach var="v" items="${valgfag}">
             <tr>
             <td>${v.fag}</td>
-            <td><input type="number" min="0" max="2" step="1" value="0" size="3" id=${v.id}></td>
+            <td><input type="radio"name="1a" value=${v.fag}></td>
+            <td><input type="radio"name="1b" value=${v.fag}></td>
+            <td><input type="radio"name="2a" value=${v.fag}></td>
+            <td><input type="radio"name="2b" value=${v.fag}></td>
             </tr>
             </c:forEach>
             </table>
+        <button type="submit" onclick="PrioritetGemtServlet" >Gem Priotet</button> 
+            
+        </form>
     </body>
 </html>

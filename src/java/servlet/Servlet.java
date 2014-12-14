@@ -44,6 +44,7 @@ public class Servlet extends HttpServlet {
         int count = valgfag.size();
         request.setAttribute("count", count);
         request.setAttribute("valgfag", valgfag);
+        //request.getParameter("fag", v)
         request.getRequestDispatcher("udvælgValgfag2.jsp").forward(request, response);
     }
 

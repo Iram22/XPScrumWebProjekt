@@ -10,6 +10,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <div id="wrapperHeader">
+ <div id="header">
+  <img src="image/logo.jpg" alt="logo" />
+ </div> 
+</div>
+
+ 
+
+
         <title>Udvælg valgfag 2. runde</title>
         <script>
             function flytTilPuljeA()
