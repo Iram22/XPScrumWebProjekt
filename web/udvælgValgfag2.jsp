@@ -15,8 +15,12 @@
         <script src="javascript/beregn-og-gem.js"></script>
         <script src="javascript/flyt-fag.js"></script>
         <link rel="stylesheet" type="text/css" href="style/css/udvælgfag_runde2.css">
+        <link rel="stylesheet" href="style/css/default_CphBusiness_layout.css"/>
     </head>
     <body>
+         <div id="banner"></div>
+         <div id="main_menubar">log ud</div>
+        <div id="mid">
         <div id="main">
             <h1>Udvælg valgfag for 2. runde</h1>
 
@@ -77,10 +81,16 @@
 
                 </div>
 
-
             </div>
 
         </div>
-
-    </body>
+            
+        </div>
+        <div id="leftside-spacer"></div>
+        <div id="leftside-panel">
+            <a href="main.jsp">Back to main page</a><br/>
+        </div>
+        <div id="spacer"></div>
+        <div id="footer">Cph Business Academy, Lundtoftevej 93, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67  kontakt@cphbank.dk  CVR: 4545 8181  EAN: 5798 000 56 0550</div>
+</body>
 </html>

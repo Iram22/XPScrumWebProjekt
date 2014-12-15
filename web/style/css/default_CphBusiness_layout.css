@@ -74,7 +74,7 @@ body{
     height:42em;
     width: 50em;
     margin-left: 29%;
-    margin-top: 2em;
+    margin-top: 1em;
     margin-bottom: 0%;
     background-color: whitesmoke;
     border-left-style: solid;
@@ -130,7 +130,7 @@ a {
     background-color: #00153a;
     background-position: center;
     margin: 0px auto;
-    height: 3em;
+    height: 4em;
     width: 82em;
     text-align: right;
     font-family: Gotham, Helvetica, Arial, sans-serif;

@@ -9,13 +9,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="style/css/default_CphBusiness_layout.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
         <script type="text/javascript" src='javascript/radiobuttonkontrol.js'></script>
         <title>JSP Page</title>
     </head>
     <body>
-
+        <div id="banner"></div>
+        <div id="main_menubar">log ud</div>
+         <div id="mid">
         <form action="PrioritetGemtServlet" method="get" >
             <p>Navn:<input type="text" name="navn" value=""></p>                      
             <table>
@@ -33,5 +36,12 @@
         <button type="submit" onclick="PrioritetGemtServlet" >Gem Priotet</button> 
             
         </form>
+         </div>
+        <div id="leftside-spacer"></div>
+        <div id="leftside-panel">
+            <a href="main.jsp">Back to main page</a><br/>
+        </div>
+        <div id="spacer"></div>
+        <div id="footer">Cph Business Academy, Lundtoftevej 93, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67  kontakt@cphbank.dk  CVR: 4545 8181  EAN: 5798 000 56 0550</div>
     </body>
 </html>

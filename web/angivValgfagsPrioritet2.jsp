@@ -11,12 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style/css/angiv_valg_prioritet2.css">
-
+        <link rel="stylesheet" href="style/css/default_CphBusiness_layout.css"/>
       
         <title>Angiv valgfagsprioriteter 2. runde</title>
     </head>
     <body>
-        
+     <div id="banner"></div>
+        <div id="main_menubar">log ud</div>
+        <div id="mid">
   <form id="myform" action="GemPrioriteterRunde2Servlet">
         <table>
             <tr>
@@ -50,6 +52,12 @@
                 <tr> <td><input type="submit" name="gem" value="Gem prioritet"> <td></tr>
         </table>
       </form>
-
+        </div>
+        <div id="leftside-spacer"></div>
+        <div id="leftside-panel">
+            <a href="main.jsp">Back to main page</a><br/>
+        </div>
+        <div id="spacer"></div>
+        <div id="footer">Cph Business Academy, Lundtoftevej 93, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67  kontakt@cphbank.dk  CVR: 4545 8181  EAN: 5798 000 56 0550</div>
     </body>
 </html>
