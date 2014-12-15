@@ -9,6 +9,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="style/css/default_CphBusiness_layout.css"/>
+        <link rel="shortcut icon" href="style/gfx/favicon.ico" type="image/x-icon" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Main</title>
     </head>

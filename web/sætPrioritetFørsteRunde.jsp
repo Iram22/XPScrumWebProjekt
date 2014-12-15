@@ -10,6 +10,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="style/css/default_CphBusiness_layout.css"/>
+        <link rel="shortcut icon" href="style/gfx/favicon.ico" type="image/x-icon" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
         <script type="text/javascript" src='javascript/radiobuttonkontrol.js'></script>

@@ -10,6 +10,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="style/css/default_CphBusiness_layout.css"/>
+        <link rel="shortcut icon" href="style/gfx/favicon.ico" type="image/x-icon" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
         <script>

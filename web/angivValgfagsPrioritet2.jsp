@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style/css/angiv_valg_prioritet2.css">
         <link rel="stylesheet" href="style/css/default_CphBusiness_layout.css"/>
+        <link rel="shortcut icon" href="style/gfx/favicon.ico" type="image/x-icon" />
       
         <title>Angiv valgfagsprioriteter 2. runde</title>
     </head>

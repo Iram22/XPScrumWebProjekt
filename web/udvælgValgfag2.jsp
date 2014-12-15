@@ -16,6 +16,7 @@
         <script src="javascript/flyt-fag.js"></script>
         <link rel="stylesheet" type="text/css" href="style/css/udvælgfag_runde2.css">
         <link rel="stylesheet" href="style/css/default_CphBusiness_layout.css"/>
+        <link rel="shortcut icon" href="style/gfx/favicon.ico" type="image/x-icon" />
     </head>
     <body>
          <div id="banner"></div>
