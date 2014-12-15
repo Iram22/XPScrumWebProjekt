@@ -6,7 +6,11 @@
 package controller;
 
 import dto.ValgfagResultat;
+import entity.AndenRunde;
+import entity.FørsteRunde;
 import entity.Puljer;
+import entity.Student;
+import entity.Udvalgtefag1runde;
 import entity.Valgfag;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,10 +20,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-/**
- *
- * @author Ahmed
- */
+
 public class Controller {
 
     private EntityManager em;
@@ -37,6 +38,43 @@ public class Controller {
         gemFagIPuljer("b", TilValfagResultat(puljeB));
     }
 
+    
+    //----------------------Gem/slet Metoder ----------------------------------------------------------//
+    
+    public void gemForslag(String titel, String underviser, String beskrivelse){
+
+        Valgfag v = new Valgfag(titel, underviser, beskrivelse);
+         em.getTransaction().begin();
+        try
+        {
+          em.persist(v);
+        
+          em.getTransaction().commit();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally
+        {
+            em.close();
+        }
+        
+
+    }
+    
+    
+     public void gemPrioriteterIDB(String navn, Collection fag)
+    {
+        Query studentQuery = em.createNamedQuery("Student.findByNavn");
+        studentQuery.setParameter("navn", navn);
+        List<Student> student = studentQuery.getResultList();
+        Query valgfagQuery = em.createNamedQuery("Valgfag.findByPrioriteter");
+        valgfagQuery.setParameter("fag", fag);
+        List<Valgfag> valgfag = valgfagQuery.getResultList();     
+        persist(new FørsteRunde(student.get(0).getId(),valgfag.get(0),valgfag.get(1),valgfag.get(2),valgfag.get(3)));       
+    }
+     
+     
     private void gemFagIPuljer(String puljenavn, Object[] pulje)
     {
         
@@ -45,6 +83,20 @@ public class Controller {
             persist(new Puljer(((ValgfagResultat)pulje[i]).getFag().getId(), puljenavn));
         }
        
+    }
+     
+      public void gemValgAndenRunde(AndenRunde andenRunde) {
+        // begin transaction 
+        em.getTransaction().begin();
+        if (!em.contains(andenRunde)) {
+            // persist object - add to entity manager
+            em.persist(andenRunde);
+            // flush em - save to DB
+            em.flush();
+        }
+        // commit transaction at all
+        em.getTransaction().commit();
+        
     }
     
     private void sletFraTabel(String tabel){
@@ -64,12 +116,103 @@ public class Controller {
         {
             em.close();
         }
-        
-        
     }
+    
+    //---------------------------Hent/Vis Metoder --------------------------------------//
+    
+     public int getTotalAntalStudenter(){
+        
+       Query q = em.createNamedQuery("Student.findAll");
+       return q.getResultList().size();
+       
+    }
+     
+      public Collection hentUdvalgteFagTilFørsteRunde(){
+        Query q = em.createNamedQuery("Udvalgtefag1runde.findAll");
+        Collection<Udvalgtefag1runde> valgfagsId = q.getResultList();
+        Collection<Valgfag> valgfag = new ArrayList<>();
+        for(Udvalgtefag1runde id : valgfagsId){
+            valgfag.add(id.getValgfag());
+            System.out.println(id.getValgfag().getFag());
+        }
+        return valgfag;
+    }
+      
+      public Valgfag hentFagViaID(int id) {
+
+        Query query = em.createNamedQuery("Valgfag.findById");
+        query.setParameter("id", id);
+        Collection<Valgfag> fag = query.getResultList();
+
+        ArrayList<Valgfag> valgfag = new ArrayList();
+
+        for (Valgfag v : fag) {
+            valgfag.add(v);
+        }
+        return valgfag.get(0);
+    }
+      
+      public ArrayList<Valgfag> visPuljeA() {
+
+        Query query = em.createNamedQuery("Puljer.findByPulje");
+        query.setParameter("pulje", "a");
+        Collection<Puljer> puljer = query.getResultList();
+
+        ArrayList<Valgfag> resultat = new ArrayList();
+
+        for (Puljer p : puljer) {
+            resultat.add(p.getValgfag());
+
+        }
+        return resultat;
+    }
+
+    public ArrayList<Valgfag> visPuljeB() {
+
+        Query query = em.createNamedQuery("Puljer.findByPulje");
+        query.setParameter("pulje", "b");
+        Collection<Puljer> puljer = query.getResultList();
+
+        ArrayList<Valgfag> resultat = new ArrayList();
+
+        for (Puljer p : puljer) {
+            resultat.add(p.getValgfag());
+
+        }
+        return resultat;
+    }
+      
+    //------------------------- Hjælpe Metoder ------------------------------------//
+      
+      public Object[] TilValfagResultat(String[] pulje)
+     {       
+         ArrayList<ValgfagResultat> valgfagResultat = new ArrayList();
+         for(int i = 0 ; i < pulje.length; i++)
+         {
+             String[] parts = pulje[i].split("[,\\s]+");
+             String fag = parts[0];
+             //Hent valgfag fra db
+             Query query = em.createNamedQuery("Valgfag.findByFag");
+             query.setParameter("fag", fag); 
+             Valgfag valgfag = (Valgfag) query.getResultList().get(0);
+             int prioritet1 = Integer.parseInt(parts[1]);
+             int prioritet2 = Integer.parseInt(parts[1]);
+             //Lav et objekt
+             ValgfagResultat resultat = new ValgfagResultat(valgfag, prioritet1, prioritet2);
+             //tilføj til arraylisten
+             valgfagResultat.add(resultat);
+             
+         }
+         return valgfagResultat.toArray();   
+     }  
+      
+      
+      
+    //--------------------------- Beregn Metoder -------------------------------------//
+     
+     
     public ArrayList<ValgfagResultat> visResultat()
     {
-       em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
       
         Query query = em.createNamedQuery("Valgfag.findAll");
         Query query2 = em.createNamedQuery("FørsteRunde.findCount1");
@@ -110,17 +253,10 @@ public class Controller {
  
     
     
-    public int getTotalAntalStudenter(){
-        
-       Query q = em.createNamedQuery("Student.findAll");
-       return q.getResultList().size();
-       
-    }
+   
     
      public void persist(Object object)
     {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("XPScrumWebProjektPU");
-        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try
         {
@@ -136,29 +272,5 @@ public class Controller {
         }
     }
      
-     public Object[] TilValfagResultat(String[] pulje)
-     {       
-         em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
-         ArrayList<ValgfagResultat> valgfagResultat = new ArrayList();
-         for(int i = 0 ; i < pulje.length; i++)
-         {
-             String[] parts = pulje[i].split("[,\\s]+");
-             String fag = parts[0];
-             System.out.println("Fag: " + fag);
-             //Hent valgfag fra db
-             Query query = em.createNamedQuery("Valgfag.findByFag");
-             query.setParameter("fag", fag); 
-             System.out.println("length: " + query.getResultList().size());
-             Valgfag valgfag = (Valgfag) query.getResultList().get(0);
-             int prioritet1 = Integer.parseInt(parts[1]);
-             int prioritet2 = Integer.parseInt(parts[1]);
-             //Lav et objekt
-             ValgfagResultat resultat = new ValgfagResultat(valgfag, prioritet1, prioritet2);
-             //tilføj til arraylisten
-             valgfagResultat.add(resultat);
-             System.out.println(fag + "I am added. Yayyyyy");
-             
-         }
-         return valgfagResultat.toArray();   
-     }  
+     
 }

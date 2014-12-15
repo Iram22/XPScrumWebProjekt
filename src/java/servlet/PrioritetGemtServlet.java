@@ -6,7 +6,7 @@
 
 package servlet;
 
-import controller.Controller2;
+import controller.Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class PrioritetGemtServlet extends HttpServlet {
         fag.add(request.getParameter("2a"));
         fag.add(request.getParameter("2b"));
         
-        Controller2 controller = new Controller2();
+        Controller controller = new Controller();
         
         controller.gemPrioriteterIDB(navn, fag);
         

@@ -5,11 +5,12 @@
  */
 package servlet;
 
-import controller.Controller3;
-import entity.AndenRunde;
+import controller.Controller;
+import dto.ValgfagResultat;
 import entity.Valgfag;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hanan
  */
-@WebServlet(name = "ServletHanan", urlPatterns = {"/ServletHanan"})
-public class ServletHanan extends HttpServlet {
+@WebServlet(name = "ValgfagTilPrioriteringRunde2Servlet", urlPatterns = {"/ValgfagTilPrioriteringRunde2"})
+public class ValgfagTilPrioriteringRunde2Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,21 +38,15 @@ public class ServletHanan extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            int fpA = Integer.parseInt(request.getParameter("førsteprioritetA"));
-            int apA = Integer.parseInt(request.getParameter("andenprioritetA"));
-            int fpB = Integer.parseInt(request.getParameter("førsteprioritetB"));
-            int apB = Integer.parseInt(request.getParameter("andenprioritetB"));
-        
-            Controller3 controller3 = new Controller3();
+            Controller controller = new Controller();
+            Collection<Valgfag> puljeA =controller.visPuljeA();
+            request.setAttribute("puljeA", puljeA);
+            
+            Collection<Valgfag> puljeB= controller.visPuljeB();
+            request.setAttribute("puljeB", puljeB);
            
-            Valgfag valgFPA = controller3.hentFagViaID(fpA);
-            Valgfag valgAPA = controller3.hentFagViaID(apA);
-            Valgfag valgFPB = controller3.hentFagViaID(fpB);
-            Valgfag valgAPB = controller3.hentFagViaID(apB);
-
-            AndenRunde resultat = new AndenRunde(3, valgFPA, valgAPA , valgFPB, valgAPB);
-            controller3.gemValgAndenRunde(resultat);
-       }
+            request.getRequestDispatcher("angivValgfagsPrioritet2.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

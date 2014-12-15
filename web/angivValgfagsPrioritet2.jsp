@@ -10,14 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="style/css.css">
+        <link rel="stylesheet" type="text/css" href="style/css/angiv_valg_prioritet2.css">
 
       
         <title>Angiv valgfagsprioriteter 2. runde</title>
     </head>
     <body>
         
-  <form id="myform" action="ServletHanan">
+  <form id="myform" action="GemPrioriteterRunde2Servlet">
         <table>
             <tr>
                 <td><b>Pulje A</b></td>

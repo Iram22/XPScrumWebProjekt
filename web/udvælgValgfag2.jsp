@@ -14,7 +14,7 @@
         <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
         <script src="javascript/beregn-og-gem.js"></script>
         <script src="javascript/flyt-fag.js"></script>
-        <link rel="stylesheet" type="text/css" href="stylesheet/myStyle.css">
+        <link rel="stylesheet" type="text/css" href="style/css/udvælgfag_runde2.css">
     </head>
     <body>
         <div id="main">

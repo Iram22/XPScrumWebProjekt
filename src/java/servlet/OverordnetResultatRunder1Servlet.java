@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Iram
  */
-@WebServlet(name = "Servlet", urlPatterns = {"/Servlet"})
-public class Servlet extends HttpServlet {
+@WebServlet(name = "OverordnetResultatRunder1Servlet", urlPatterns = {"/OverordnetResultatRunder1"})
+public class OverordnetResultatRunder1Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

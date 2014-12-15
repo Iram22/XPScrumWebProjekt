@@ -1,6 +1,6 @@
 package servlet;
 
-import controller.Controller2;
+import controller.Controller;
 import entity.Valgfag;
 import java.io.IOException;
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class SætPrioritetFørsteRundeServlet extends HttpServlet {
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        Controller2 controller = new Controller2();
+        Controller controller = new Controller();
         Collection<Valgfag> valgfag = controller.hentUdvalgteFagTilFørsteRunde();
         int count = valgfag.size();
         request.setAttribute("count", count);
