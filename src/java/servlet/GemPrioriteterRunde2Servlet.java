@@ -55,6 +55,8 @@ public class GemPrioriteterRunde2Servlet extends HttpServlet {
 
             AndenRunde resultat = new AndenRunde(studentId, valgFPA, valgAPA , valgFPB, valgAPB);
             controller3.gemValgAndenRunde(resultat);
+            
+            request.getRequestDispatcher("PrioriteterRegistreret.jsp").forward(request, response);
        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
