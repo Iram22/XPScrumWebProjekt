@@ -24,11 +24,11 @@ INSERT into student values
 (4, 'Kenn Jacobsen'),
 (5, 'Aske Rode'),
 (6, 'Thor Kristensen'),
-(7, 'Johan Leu')
-(7, 'Jesper Olsen')
-(7, 'Martin Olgenkjær')
-(7, 'Henrik Stavnem')
-(7, 'Nicklas Thomsen');
+(7, 'Johan Leu'),
+(8, 'Jesper Olsen'),
+(9, 'Martin Olgenkjær'),
+(10, 'Henrik Stavnem'),
+(11, 'Nicklas Thomsen');
 
 
 INSERT into første_runde values 
@@ -50,9 +50,8 @@ insert into udvalgtefag1runde values
 
 insert into puljer values
 (1,'a'),
-(2,'a'),
-(3, 'a'),
-(4, 'b'),
+(7,'a'),
 (5, 'b'),
-(6, 'b');
+(4, 'b'),
+(2, 'b');
 
