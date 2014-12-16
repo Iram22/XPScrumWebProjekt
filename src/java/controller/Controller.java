@@ -152,6 +152,21 @@ public class Controller {
         return valgfag.get(0);
     }
       
+        public int hentStudentIdViaNavn(String navn) {
+
+        Query query = em.createNamedQuery("Student.findByNavn");
+        query.setParameter("navn", navn);
+        Collection<Student> navnResultat = query.getResultList();
+
+        ArrayList<Student> student = new ArrayList();
+        for (Student n : navnResultat) {
+            student.add(n);
+        }
+
+        
+        return student.get(0).getId();
+    }
+      
       public ArrayList<Valgfag> visPuljeA() {
 
         Query query = em.createNamedQuery("Puljer.findByPulje");

@@ -36,24 +36,27 @@ public class GemPrioriteterRunde2Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            int fpA = Integer.parseInt(request.getParameter("førsteprioritetA"));
+       
+            
+            String navn = request.getParameter("studentNavn");
+            int fpA = Integer.parseInt(request.getParameter("foersteprioritetA"));
             int apA = Integer.parseInt(request.getParameter("andenprioritetA"));
-            int fpB = Integer.parseInt(request.getParameter("førsteprioritetB"));
+            int fpB = Integer.parseInt(request.getParameter("foersteprioritetB"));
             int apB = Integer.parseInt(request.getParameter("andenprioritetB"));
         
-            Controller controller = new Controller();
+            Controller controller3 = new Controller();
            
-            Valgfag valgFPA = controller.hentFagViaID(fpA);
-            Valgfag valgAPA = controller.hentFagViaID(apA);
-            Valgfag valgFPB = controller.hentFagViaID(fpB);
-            Valgfag valgAPB = controller.hentFagViaID(apB);
+            
+            int studentId = controller3.hentStudentIdViaNavn(navn);
+            Valgfag valgFPA = controller3.hentFagViaID(fpA);
+            Valgfag valgAPA = controller3.hentFagViaID(apA);
+            Valgfag valgFPB = controller3.hentFagViaID(fpB);
+            Valgfag valgAPB = controller3.hentFagViaID(apB);
 
-            AndenRunde resultat = new AndenRunde(3, valgFPA, valgAPA , valgFPB, valgAPB);
-            controller.gemValgAndenRunde(resultat);
+            AndenRunde resultat = new AndenRunde(studentId, valgFPA, valgAPA , valgFPB, valgAPB);
+            controller3.gemValgAndenRunde(resultat);
        }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
