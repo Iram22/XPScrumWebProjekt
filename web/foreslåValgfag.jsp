@@ -34,7 +34,7 @@
               $("#titel").val("");
               $("#underviser").val("");
               $("#beskrivelse").val("");
-              $("#besked").val("")
+              $("#besked").val(data);
               document.location.reload();
             });
              

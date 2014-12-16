@@ -54,4 +54,3 @@ insert into puljer values
 (5, 'b'),
 (4, 'b'),
 (2, 'b');
-

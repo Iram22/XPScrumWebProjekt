@@ -41,10 +41,23 @@ public class Controller {
     
     //----------------------Gem/slet Metoder ----------------------------------------------------------//
     
-    public void gemForslag(String titel, String underviser, String beskrivelse){
+    public void gemForslag(String titel, String underviser, String beskrivelse) throws Exception{
 
         Valgfag v = new Valgfag(titel, underviser, beskrivelse);
-         em.getTransaction().begin();
+        Query query = em.createNamedQuery("Valgfag.findByFag");
+        
+        query.setParameter("fag", v.getFag());
+       if(query.getResultList() == null)
+        {
+            System.out.println("    i was null");
+        }
+       
+       else
+       {
+           System.out.println("yuhoo i ws not");
+        }
+            System.out.println("I began");
+              em.getTransaction().begin();
         try
         {
           em.persist(v);
@@ -58,6 +71,14 @@ public class Controller {
         {
             em.close();
         }
+        
+        
+        //else
+        {
+            //throw new Exception();
+        }
+        
+       
         
 
     }
