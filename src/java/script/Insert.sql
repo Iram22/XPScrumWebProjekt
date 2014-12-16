@@ -7,21 +7,28 @@ INSERT into valgfag values
 (1, 'C#','LAM','helloooooooooooooooooooooooooo there'),
 (2, 'Python','PELO','glædelig jul'),
 (3, 'Haskel','CHU','godt nytår'),
-(4, 'Gaming','AKA','et eller andet'),
+(4, 'Games','AKA','et eller andet'),
 (5, 'Android','LAM','yahoo'),
-(6, 'Python','TOR','hahahahahahaha'),
-(7, 'WebProgrammering','PELO','LMAO'),
-(8, 'Grafik','Henrik','YOLO');
+(6, 'Web Programmering','PELO','LMAO'),
+(7, 'SW Design','Henrik','YOLO'),
+(8, 'Grafik','Henrik','YOLO'),
+(9, 'Databaser','Henrik','YOLO'),
+(10, 'Test','Henrik','YOLO'),
+(11, 'Arduino','Henrik','YOLO');
 
 
 INSERT into student values
-(1, 'Dino'),
-(2, 'Iram'),
-(3, 'Hanan'),
-(4, 'Mehmet'),
-(5, 'Ahmed'),
-(6, 'Chris'),
-(7, 'Lida');
+(1, 'Bjarke Carlsen'),
+(2, 'Emil Christiansen'),
+(3, 'Jesper Dahl'),
+(4, 'Kenn Jacobsen'),
+(5, 'Aske Rode'),
+(6, 'Thor Kristensen'),
+(7, 'Johan Leu')
+(7, 'Jesper Olsen')
+(7, 'Martin Olgenkjær')
+(7, 'Henrik Stavnem')
+(7, 'Nicklas Thomsen');
 
 
 INSERT into første_runde values 
@@ -34,11 +41,12 @@ INSERT into første_runde values
 insert into udvalgtefag1runde values 
 (1),
 (2),
-(3),
 (5),
-(6),
 (7),
-(8);
+(4),
+(9),
+(10),
+(11);
 
 insert into puljer values
 (1,'a'),
