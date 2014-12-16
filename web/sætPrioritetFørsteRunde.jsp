@@ -34,7 +34,8 @@
             </tr>
             </c:forEach>
             </table>
-        <button type="submit" onclick="PrioritetGemtServlet" >Gem Priotet</button> 
+        <button type="submit" onclick="PrioritetGemtServlet" >Gem Priotet</button>
+        <p style="color: red; font-weight: bold">${error}</p>
             
         </form>
          </div>

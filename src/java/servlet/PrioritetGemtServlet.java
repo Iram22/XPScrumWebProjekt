@@ -7,8 +7,10 @@
 package servlet;
 
 import controller.Controller;
+import entity.Valgfag;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +37,7 @@ public class PrioritetGemtServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        try{
         String navn = request.getParameter("navn");
         List fag = new ArrayList();
         fag.add(request.getParameter("1a"));
@@ -46,6 +48,16 @@ public class PrioritetGemtServlet extends HttpServlet {
         Controller controller = new Controller();
         
         controller.gemPrioriteterIDB(navn, fag);
+        }
+        catch(Exception e){
+        Controller controller = new Controller();
+        Collection<Valgfag> valgfag = controller.hentUdvalgteFagTilFørsteRunde();
+        int count = valgfag.size();
+        request.setAttribute("count", count);
+        request.setAttribute("valgfag", valgfag);
+        request.setAttribute("error", "VÆLG 4 PRIORITETER OG UDFYLD NAVN!!!!! :@");
+        request.getRequestDispatcher("sætPrioritetFørsteRunde.jsp").forward(request, response);
+        }
         
         
     }
