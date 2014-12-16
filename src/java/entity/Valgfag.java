@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Valgfag.findById", query = "SELECT v FROM Valgfag v WHERE v.id = :id"),
     @NamedQuery(name = "Valgfag.findByFag", query = "SELECT v FROM Valgfag v WHERE v.fag = :fag"),
     @NamedQuery(name = "Valgfag.findByUnderviser", query = "SELECT v FROM Valgfag v WHERE v.underviser = :underviser"),
-    @NamedQuery(name = "Valgfag.findByBeskrivelse", query = "SELECT v FROM Valgfag v WHERE v.beskrivelse = :beskrivelse")})
+    @NamedQuery(name = "Valgfag.findByBeskrivelse", query = "SELECT v FROM Valgfag v WHERE v.beskrivelse = :beskrivelse"),
+    @NamedQuery(name = "Valgfag.findByPrioriteter", query = "SELECT v FROM Valgfag v WHERE v.fag IN :fag")})
 
 public class Valgfag implements Serializable {
     private static final long serialVersionUID = 1L;

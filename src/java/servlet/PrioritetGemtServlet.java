@@ -48,8 +48,10 @@ public class PrioritetGemtServlet extends HttpServlet {
         Controller controller = new Controller();
         
         controller.gemPrioriteterIDB(navn, fag);
+        
+        request.getRequestDispatcher("PrioriteterRegistreret.jsp").forward(request, response);
         }
-        catch(Exception e){
+        catch(ArrayIndexOutOfBoundsException e){
         Controller controller = new Controller();
         Collection<Valgfag> valgfag = controller.hentUdvalgteFagTilFørsteRunde();
         int count = valgfag.size();
