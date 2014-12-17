@@ -245,6 +245,7 @@ public class Controller {
     }
 
     public void persist(Object object) {
+        em = Persistence.createEntityManagerFactory("XPScrumWebProjektPU").createEntityManager();
         em.getTransaction().begin();
         try {
             em.persist(object);

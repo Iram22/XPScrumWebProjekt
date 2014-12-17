@@ -11,6 +11,7 @@ $(document).ready(function() {
     });
     $("#gem").click(function() {
         gem();
+        alert("Gemt"); 
     });
 
 
