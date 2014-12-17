@@ -10,6 +10,7 @@ import entity.AndenRunde;
 import entity.Valgfag;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hanan
  */
-@WebServlet(name = "GemPrioriteterRunde2Servlet", urlPatterns = {"/GemPrioriteterRunde2"})
+@WebServlet(name = "GemPrioriteterRunde2Servlet", urlPatterns = {"/GemPrioriteterRunde2Servlet"})
 public class GemPrioriteterRunde2Servlet extends HttpServlet {
 
     /**
@@ -36,28 +37,51 @@ public class GemPrioriteterRunde2Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-       
-            
-            String navn = request.getParameter("studentNavn");
-            int fpA = Integer.parseInt(request.getParameter("foersteprioritetA"));
-            int apA = Integer.parseInt(request.getParameter("andenprioritetA"));
-            int fpB = Integer.parseInt(request.getParameter("foersteprioritetB"));
-            int apB = Integer.parseInt(request.getParameter("andenprioritetB"));
-        
-            Controller controller3 = new Controller();
-           
-            
-            int studentId = controller3.hentStudentIdViaNavn(navn);
-            Valgfag valgFPA = controller3.hentFagViaID(fpA);
-            Valgfag valgAPA = controller3.hentFagViaID(apA);
-            Valgfag valgFPB = controller3.hentFagViaID(fpB);
-            Valgfag valgAPB = controller3.hentFagViaID(apB);
 
-            AndenRunde resultat = new AndenRunde(studentId, valgFPA, valgAPA , valgFPB, valgAPB);
-            controller3.gemValgAndenRunde(resultat);
-            
-            request.getRequestDispatcher("PrioriteterRegistreret.jsp").forward(request, response);
-       }
+            String navn = request.getParameter("studentNavn");
+            try {
+                int fpA = Integer.parseInt(request.getParameter("foersteprioritetA"));
+                int apA = Integer.parseInt(request.getParameter("andenprioritetA"));
+                int fpB = Integer.parseInt(request.getParameter("foersteprioritetB"));
+                int apB = Integer.parseInt(request.getParameter("andenprioritetB"));
+                Controller controller3 = new Controller();
+
+                int studentId = controller3.hentStudentIdViaNavn(navn);
+                Valgfag valgFPA = controller3.hentFagViaID(fpA);
+                Valgfag valgAPA = controller3.hentFagViaID(apA);
+                Valgfag valgFPB = controller3.hentFagViaID(fpB);
+                Valgfag valgAPB = controller3.hentFagViaID(apB);
+
+                AndenRunde resultat = new AndenRunde(studentId, valgFPA, valgAPA, valgFPB, valgAPB);
+                controller3.gemValgAndenRunde(resultat);
+
+                request.getRequestDispatcher("PrioriteterRegistreret.jsp").forward(request, response);
+            } catch (NumberFormatException e) {
+                System.out.println(e.getClass());
+                Controller controller = new Controller();
+                Collection<Valgfag> puljeA = controller.visPuljeA();
+                request.setAttribute("puljeA", puljeA);
+
+                Collection<Valgfag> puljeB = controller.visPuljeB();
+                request.setAttribute("puljeB", puljeB);
+                request.setAttribute("error", "Udfyld venligst alle felter!");
+                request.getRequestDispatcher("angivValgfagsPrioritet2.jsp").forward(request, response);
+            }
+            catch(IllegalArgumentException e)
+            {   
+                System.out.println(e.getClass());
+                Controller controller = new Controller();
+                Collection<Valgfag> puljeA = controller.visPuljeA();
+                request.setAttribute("puljeA", puljeA);
+
+                Collection<Valgfag> puljeB = controller.visPuljeB();
+                request.setAttribute("puljeB", puljeB);
+                request.setAttribute("error", "Studerende findes ikke!");
+                request.getRequestDispatcher("angivValgfagsPrioritet2.jsp").forward(request, response);
+                
+            }
+
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

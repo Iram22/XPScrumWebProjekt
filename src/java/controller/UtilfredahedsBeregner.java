@@ -116,12 +116,12 @@ public class UtilfredahedsBeregner {
             String result =  stud.getStudent().getNavn() +" "+ stud.getFørstePrioriteta().getFag() +" "+ 
                              stud.getFørstePrioritetb().getFag() +" "+ stud.getAndenPrioriteta().getFag() +" "+
                              stud.getAndenPrioritetb().getFag() +" "+  valgIpuljeA+"/"+valgIpuljeB;
-               
             utilfredseStudenter.add(result); // List kan sorteres ved Collections.sort den og reverse
-            
+             
                
     
         } // end of loop
+          
           utilfredseStudenter = sortList(utilfredseStudenter);
           return utilfredseStudenter;
           
@@ -156,22 +156,22 @@ public class UtilfredahedsBeregner {
             String currentStudent = ((String)list.get(i));
             String[] temp = currentStudent.split(" ");
             
-            if(temp[5].compareTo("0/0") == 0){
+            if(temp[6].compareTo("0/0") == 0){
                 ekstrem.add(currentStudent);
             }
-            if(temp[5].compareTo("2/0") == 0 || temp[5].compareTo("0/2") == 0){
+            if(temp[6].compareTo("2/0") == 0 || temp[6].compareTo("0/2") == 0){
                 meget.add(currentStudent);
             }
-            if(temp[5].compareTo("1/0") == 0 || temp[5].compareTo("0/1") == 0){
+            if(temp[6].compareTo("1/0") == 0 || temp[6].compareTo("0/1") == 0){
                 mellem.add(currentStudent);
             }
-            if(temp[5].compareTo("2/2") == 0){
+            if(temp[6].compareTo("2/2") == 0){
                 let.add(currentStudent);
             }
-            if(temp[5].compareTo("1/2") == 0 || temp[5].compareTo("2/1") == 0){
+            if(temp[6].compareTo("1/2") == 0 || temp[6].compareTo("2/1") == 0){
                 ok.add(currentStudent);
             }
-            if(temp[5].compareTo("1/1") == 0 ){
+            if(temp[6].compareTo("1/1") == 0 ){
                 tilfreds.add(currentStudent);
             }
         }

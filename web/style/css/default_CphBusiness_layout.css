@@ -71,9 +71,9 @@ body{
 
 #mid{
     
-    height:42em;
+    height:45em;
     width: 50em;
-    margin-left: 29%;
+    margin-left: 4.5em;
     margin-top: 1em;
     margin-bottom: 0%;
     background-color: whitesmoke;
@@ -83,21 +83,23 @@ body{
     border-right-width: 1px;
     border-left-color: #e4e1e1;
     border-right-color:#e4e1e1;
-    padding: 0;
+    padding-left: 0;
     border-radius: 0;
     top: 0%;
     overflow: hidden;
 }
-    
-#valgfagList{
-    border: 1px solid; 
-    width: 15em; 
-    height: 15em
-     
-} 
+
  
 .li{
     margin-left: 3em;
+    
+    
+}
+
+#list
+{
+    border: 1px solid; 
+    width: 15em;
     
 }
     
@@ -136,4 +138,35 @@ a {
     font-family: Gotham, Helvetica, Arial, sans-serif;
     color: white;
     font-size: 10px;
+}
+
+#main
+{
+    width:70%;
+    margin-left: 15%;
+    background-color: white;
+    
+}
+
+#links
+{
+    margin:5em 10em;  
+}
+
+a
+{
+    font-size: 20px;
+    
+}
+
+#back
+{
+    float:right;
+    margin: 1em;
+}
+
+.andenP
+{
+    margin:3em 5em; 
+    
 }

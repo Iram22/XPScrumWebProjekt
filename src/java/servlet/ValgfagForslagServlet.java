@@ -45,7 +45,7 @@ public class ValgfagForslagServlet extends HttpServlet {
         request.setAttribute("count", count);
         request.setAttribute("valgfag", valgfag);
         //request.getParameter("fag", v)
-        request.getRequestDispatcher("foreslåValgfag.jsp").forward(request, response);
+        request.getRequestDispatcher("opretValgfag.jsp").forward(request, response);
         }
     }
 

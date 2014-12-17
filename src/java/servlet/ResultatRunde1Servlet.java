@@ -6,11 +6,13 @@
 
 package servlet;
 
-import com.google.gson.Gson;
 import controller.Controller;
+import dto.ValgfagResultat;
+import entity.Valgfag;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Iram
  */
-@WebServlet(name = "AjaxServlet", urlPatterns = {"/AjaxServlet"})
-public class AjaxServlet extends HttpServlet {
+@WebServlet(name = "OverordnetResultatRunder1Servlet", urlPatterns = {"/OverordnetResultatRunder1"})
+public class ResultatRunde1Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +37,15 @@ public class AjaxServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
-        String[] puljeA = request.getParameterValues("puljeA[]");
-        String[] puljeB = request.getParameterValues("puljeB[]");
-        
+        response.setContentType("text/html;charset=UTF-8");
+      
         Controller controller = new Controller();
-        List list = controller.beregnTilfredshed(puljeA, puljeB);
-        
-       
-        response.setContentType("json;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            //System.out.println("heheh");
-            String gson = new Gson().toJson(list);
-            out.println(gson);
-        }
+        Collection<ValgfagResultat> valgfag = controller.visResultat();
+        int count = valgfag.size();
+        request.setAttribute("count", count);
+        request.setAttribute("valgfag", valgfag);
+        //request.getParameter("fag", v)
+        request.getRequestDispatcher("udvælgValgfag2.jsp").forward(request, response);
     }
     
     

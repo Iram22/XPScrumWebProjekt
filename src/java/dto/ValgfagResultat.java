@@ -49,7 +49,7 @@ public class ValgfagResultat {
 
     @Override
     public String toString() {
-        return fag.getFag() + ", " + prioritet1 + ", " + prioritet2;
+        return fag.getFag() + "," + prioritet1 + "," + prioritet2;
     }
     
     

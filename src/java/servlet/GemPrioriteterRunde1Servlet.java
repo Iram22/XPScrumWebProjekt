@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import controller.Controller;
@@ -23,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author bruger
  */
 @WebServlet(name = "PrioritetGemtServlet", urlPatterns = {"/PrioritetGemtServlet"})
-public class PrioritetGemtServlet extends HttpServlet {
+public class GemPrioriteterRunde1Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,31 +36,38 @@ public class PrioritetGemtServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try{
-        String navn = request.getParameter("navn");
-        List fag = new ArrayList();
-        fag.add(request.getParameter("1a"));
-        fag.add(request.getParameter("1b"));
-        fag.add(request.getParameter("2a"));
-        fag.add(request.getParameter("2b"));
-        
-        Controller controller = new Controller();
-        
-        controller.gemPrioriteterIDB(navn, fag);
-        
-        request.getRequestDispatcher("PrioriteterRegistreret.jsp").forward(request, response);
+        try {
+            String navn = request.getParameter("navn");
+            List fag = new ArrayList();
+            fag.add(request.getParameter("1a"));
+            fag.add(request.getParameter("1b"));
+            fag.add(request.getParameter("2a"));
+            fag.add(request.getParameter("2b"));
+
+            Controller controller = new Controller();
+
+            controller.gemPrioriteterIDB(navn, fag);
+
+            request.getRequestDispatcher("PrioriteterRegistreret.jsp").forward(request, response);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Controller controller = new Controller();
+            Collection<Valgfag> valgfag = controller.hentUdvalgteFagTilFørsteRunde();
+            int count = valgfag.size();
+            request.setAttribute("count", count);
+            request.setAttribute("valgfag", valgfag);
+            request.setAttribute("error", "Udfyld venligst alle felter!");
+            request.getRequestDispatcher("angivValgfagsPrioritet1.jsp").forward(request, response);
+        } catch (IllegalArgumentException e) {
+            Controller controller = new Controller();
+            Collection<Valgfag> valgfag = controller.hentUdvalgteFagTilFørsteRunde();
+            int count = valgfag.size();
+            request.setAttribute("count", count);
+            request.setAttribute("valgfag", valgfag);
+            request.setAttribute("error", "Studerene findes ikke!");
+            request.getRequestDispatcher("angivValgfagsPrioritet1.jsp").forward(request, response);
+
         }
-        catch(ArrayIndexOutOfBoundsException e){
-        Controller controller = new Controller();
-        Collection<Valgfag> valgfag = controller.hentUdvalgteFagTilFørsteRunde();
-        int count = valgfag.size();
-        request.setAttribute("count", count);
-        request.setAttribute("valgfag", valgfag);
-        request.setAttribute("error", "VÆLG 4 PRIORITETER OG UDFYLD NAVN!!!!! :@");
-        request.getRequestDispatcher("sætPrioritetFørsteRunde.jsp").forward(request, response);
-        }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

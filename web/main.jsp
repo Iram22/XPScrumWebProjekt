@@ -14,18 +14,21 @@
         <title>Main</title>
     </head>
     <body>
+        <div id="main">
         <div id="banner"></div>
-        <div id="main_menubar">Log in</div>
-        <div id="mid"></div>
-        
-        <div id="leftside-spacer"></div>
-        <div id="leftside-panel">
-        <a href="ValgfagForslag">Foreslå valgfag</a><br>
-        <a href="S_tPrioritetF_rsteRundeServlet">Angive prioriteter første runde</a><br>
-        <a href="OverordnetResultatRunder1">Udvælg valgfag anden runde</a><br>
-        <a href="ValgfagTilPrioriteringRunde2">Angive prioriteter anden runde</a>
+        <div id="main_menubar"></div>
+        <div id="mid">
+            <div id="links">
+            
+        > <a href="ValgfagForslag">Opret valgfag</a><br/><br/>
+        > <a href="S_tPrioritetF_rsteRundeServlet">Første valgfagsrunde</a><br><br/>
+        > <a href="OverordnetResultatRunder1">Udvælg valgfag til anden runde</a><br><br/>
+        > <a href="ValgfagTilPrioriteringRunde2">Anden valgfagsrunde</a>
+        </div>
         </div>
         <div id="spacer"></div>
-        <div id="footer">Cph Business Academy, Lundtoftevej 93, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67  kontakt@cphbank.dk  CVR: 4545 8181  EAN: 5798 000 56 0550</div>
-    </body>
+        <div id="footer">Cph Business Academy, Nørgårdsvej 30, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67   CVR: 4545 8181  EAN: 5798 000 56 0550</div>
+    
+        </div>
+        </body>
 </html>

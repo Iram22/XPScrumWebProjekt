@@ -13,16 +13,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-                <div id="banner"></div>
-        <div id="main_menubar">log ud</div>
-         <div id="mid">
-             <h1>Dine valg er hermed registeret.</h1>
+          <div id="main">
+            <div id="banner"></div>
+            <div id="main_menubar"></div>
+            <div id="mid">
+                <div id="back">
+                    <a href="main.jsp">Back to main page</a><br/>
+                </div><br/>
+                <h1>Dine valg er hermed registeret.</h1>
          </div>
         <div id="leftside-spacer"></div>
         <div id="leftside-panel">
             <a href="main.jsp">Back to main page</a><br/>
         </div>
         <div id="spacer"></div>
-        <div id="footer">Cph Business Academy, Lundtoftevej 93, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67  kontakt@cphbank.dk  CVR: 4545 8181  EAN: 5798 000 56 0550</div>
+            <div id="footer">Cph Business Academy, Nørgårdsvej 30, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67   CVR: 4545 8181  EAN: 5798 000 56 0550</div>
     </body>
 </html>

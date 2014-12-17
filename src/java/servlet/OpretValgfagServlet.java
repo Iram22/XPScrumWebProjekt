@@ -7,12 +7,8 @@
 package servlet;
 
 import controller.Controller;
-import dto.ValgfagResultat;
-import entity.Valgfag;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,10 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Iram
+ * @author Chris
  */
-@WebServlet(name = "OverordnetResultatRunder1Servlet", urlPatterns = {"/OverordnetResultatRunder1"})
-public class OverordnetResultatRunder1Servlet extends HttpServlet {
+@WebServlet(name = "gemValgfagForslagServlet", urlPatterns = {"/gemValgfagForslag"})
+public class OpretValgfagServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,18 +33,22 @@ public class OverordnetResultatRunder1Servlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-      
-        Controller controller = new Controller();
-        Collection<ValgfagResultat> valgfag = controller.visResultat();
-        int count = valgfag.size();
-        request.setAttribute("count", count);
-        request.setAttribute("valgfag", valgfag);
-        //request.getParameter("fag", v)
-        request.getRequestDispatcher("udvælgValgfag2.jsp").forward(request, response);
+        response.setContentType("text;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            Controller c = new Controller();
+            String titel = request.getParameter("titel");
+            String underviser = request.getParameter("underviser");
+            String beskrivelse = request.getParameter("beskrivelse");
+            try{
+            c.gemForslag(titel, underviser, beskrivelse);
+            out.println("Din forslag er nu gemt");
+            }catch (Exception e){
+            out.println("Din forslag findes i forvejen");
+            }
+        }
+        
     }
-    
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

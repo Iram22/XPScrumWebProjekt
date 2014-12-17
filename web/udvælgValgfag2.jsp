@@ -19,10 +19,14 @@
         <link rel="shortcut icon" href="style/gfx/favicon.ico" type="image/x-icon" />
     </head>
     <body>
-         <div id="banner"></div>
-         <div id="main_menubar">log ud</div>
-        <div id="mid">
-        <div id="main">
+          <div id="main">
+            <div id="banner"></div>
+            <div id="main_menubar"></div>
+            <div id="mid">
+                <div id="back">
+                    <a href="main.jsp">Back to main page</a><br/>
+                </div><br/>
+        <div>
             <h1>Udvælg valgfag for 2. runde</h1>
 
             <div class="list">
@@ -36,10 +40,10 @@
             </div>
             <div id="flyt">
 
-                <button onclick="flytTilPuljeA()"> >>Pulje A </button>
+                <button onclick="flytTilPuljeA()" class="flytBtn"> >>Pulje A </button>
                 <br/><br/>
 
-                <button onclick="flytTilPuljeB()"> >>Pulje B </button>
+                <button onclick="flytTilPuljeB()" class="flytBtn"> >>Pulje B </button>
             </div>
 
             <div>
@@ -73,11 +77,14 @@
 
                 <div id="tab">
                     <br/><br/>
+                    <button id="gem">Gem</button>
+                    <br/>
+                    
                     <table id="beregning" border="1">
                         <tr id="header"><th>Navn</th><th>1a</th><th>1b</th><th>2a</th><th>2b</th><th>Tilfredshed</th></tr>
                     </table>
-                    <br/>
-                    <button id="gem">Gem</button>
+                    
+                    
                     <p id="besked"></p>
 
                 </div>
@@ -87,11 +94,7 @@
         </div>
             
         </div>
-        <div id="leftside-spacer"></div>
-        <div id="leftside-panel">
-            <a href="main.jsp">Back to main page</a><br/>
-        </div>
         <div id="spacer"></div>
-        <div id="footer">Cph Business Academy, Lundtoftevej 93, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67  kontakt@cphbank.dk  CVR: 4545 8181  EAN: 5798 000 56 0550</div>
+            <div id="footer">Cph Business Academy, Nørgårdsvej 30, DK-2800 Kgs. Lyngby  Telefon: +45 12 34 56 67   CVR: 4545 8181  EAN: 5798 000 56 0550</div>
 </body>
 </html>

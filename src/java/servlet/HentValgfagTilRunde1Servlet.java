@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
     "/S_tPrioritetF_rsteRundeServlet"
 })
 
-public class SætPrioritetFørsteRundeServlet extends HttpServlet {
+public class HentValgfagTilRunde1Servlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
@@ -25,7 +25,7 @@ public class SætPrioritetFørsteRundeServlet extends HttpServlet {
         int count = valgfag.size();
         request.setAttribute("count", count);
         request.setAttribute("valgfag", valgfag);
-        request.getRequestDispatcher("sætPrioritetFørsteRunde.jsp").forward(request, response);
+        request.getRequestDispatcher("angivValgfagsPrioritet1.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

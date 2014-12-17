@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Hanan
  */
 @WebServlet(name = "ValgfagTilPrioriteringRunde2Servlet", urlPatterns = {"/ValgfagTilPrioriteringRunde2"})
-public class ValgfagTilPrioriteringRunde2Servlet extends HttpServlet {
+public class HentPuljerTilRunde2Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

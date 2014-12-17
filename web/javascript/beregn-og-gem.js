@@ -36,6 +36,7 @@ function beregn() {
         data: {puljeA: hentPulje("#puljeA option"), puljeB: hentPulje("#puljeB option")},
         datatype: "json"
     }).done(function(data) {
+        
         $("tr:not(#header)").remove();
 
         var len = data.length;
@@ -45,12 +46,15 @@ function beregn() {
         {
             var tr = document.createElement("tr");
             var parts = data[i].split(" ");
-            for (j = 0; j < 6; j++)
+            
+            var første = parts[0] + " ";
+            for (j = 1; j < 7; j++)
             {
                 //alert("I got here");
                 var td = document.createElement("td");
-                td.innerHTML = parts[j];
+                td.innerHTML =  første + parts[j];
                 tr.appendChild(td);
+                første = "";
             }
 
             table.appendChild(tr);

@@ -6,9 +6,11 @@
 
 package servlet;
 
+import com.google.gson.Gson;
 import controller.Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Chris
+ * @author Iram
  */
-@WebServlet(name = "gemValgfagForslagServlet", urlPatterns = {"/gemValgfagForslag"})
-public class gemValgfagForslagServlet extends HttpServlet {
+@WebServlet(name = "AjaxServlet", urlPatterns = {"/AjaxServlet"})
+public class BeregnTilfredshedServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,22 +35,26 @@ public class gemValgfagForslagServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+    
+        String[] puljeA = request.getParameterValues("puljeA[]");
+        String[] puljeB = request.getParameterValues("puljeB[]");
+        
+        Controller controller = new Controller();
+        List list = controller.beregnTilfredshed(puljeA, puljeB);
+        
+        System.out.println("I got something: " + list.size());
+        
+       
+        response.setContentType("json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            Controller c = new Controller();
-            String titel = request.getParameter("titel");
-            String underviser = request.getParameter("underviser");
-            String beskrivelse = request.getParameter("beskrivelse");
-            try{
-            c.gemForslag(titel, underviser, beskrivelse);
-            out.println("din forslag er nu gemt");
-            }catch (Exception e){
-            out.println("din forslag findes i forvejen");
-            }
+            //System.out.println("heheh");
+            String gson = new Gson().toJson(list);
+            out.println(gson);
         }
-        
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
